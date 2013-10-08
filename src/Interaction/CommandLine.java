@@ -11,8 +11,6 @@ import User.User;
 
 /**
  * Command Line access to the Student Meetup application.
- *
- * @author Zach Knickerbocker
  */
 public class CommandLine {
 

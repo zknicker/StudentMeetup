@@ -4,8 +4,6 @@ import java.sql.*;
 
 /**
  * Manages providing connections to the database.
- *
- * @author Zach Knickerbocker
  */
 public class DatabaseConnection {
 	

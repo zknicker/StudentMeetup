@@ -2,8 +2,6 @@ package User;
 
 /**
  * Defines a user.
- * 
- * @author Zach Knickerbocker
  */
 public class User {
 	

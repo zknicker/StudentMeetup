@@ -7,8 +7,6 @@ import User.User;
 
 /**
  * Gateway methods for interacting with a user in the database.
- *
- * @author Zach Knickerbocker
  */
 public class UserGateway {
 
