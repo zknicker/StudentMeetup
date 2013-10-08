@@ -14,3 +14,7 @@ out
 bin
 .classpath
 .project
+
+# Restore ignored H2 files #
+!db/h2/bin
+!db/h2/bin/*.jar
