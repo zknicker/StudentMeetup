@@ -3,12 +3,13 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
-
+import java.util.*;
 
 import ORM.DatabaseConnection;
 import ORM.UserGateway;
 import ORM.EventGateway;
+import ORM.UserFinder;
+import ORM.EventFinder;
 import User.User;
 import Event.Event;
 
@@ -75,6 +76,18 @@ public class CommandLine {
     	UserGateway userGateway = UserGateway.create(user);
     	userGateway.insert();
     	
+    	user = new User();
+    	user.userId = 3456; // this should be an auto-incrementing field... fix later
+    	user.handle = "dch9";
+    	user.firstName = "Dave";
+    	user.lastName = "Holmes";
+    	user.email = "dh@gmail.com";
+    	user.password = "234sd2";
+    	user.rating = 99.2f;
+    	user.notificationPreference = false;
+    	userGateway = UserGateway.create(user);
+    	userGateway.insert();
+    	
     	//Update all attributes for the user 
     	userGateway.handle = "New Handle";
     	userGateway.firstName = "Updated First Name";
@@ -83,10 +96,26 @@ public class CommandLine {
     	userGateway.password = "Changed Password";
     	userGateway.rating = 45.4f;
     	userGateway.notificationPreference = true;
-    	userGateway.update();
     	
-    	//Delete the user from the User table
+        /** Test code to update all user attributes */
+    	//userGateway.update();
+
+    	
+        /** Test code to delete user based on id */
     	//userGateway.delete();
+    	
+        
+        /** Test code to pull back user based on id */
+    	UserFinder userFinder =  new UserFinder();
+        //userGateway = userFinder.findUser(1);
+    	
+        /** Test code to pull back a collection of users */
+    	//List<UserGateway> userSet = new ArrayList<UserGateway>();
+    	//userSet = userFinder.findUsersByNotificationPreference(false);
+    	
+    	//for(int i=0;i<userSet.size();i++){
+    	//    System.out.println(userSet.get(i).handle);
+    	//} 
     	
     	
         // Try a select (this will go into a finder class)
@@ -120,6 +149,36 @@ public class CommandLine {
     	EventGateway eventGateway = EventGateway.create(event);
     	eventGateway.insert();
     	
+        event = new Event();
+     	event.eventId = 3214546;
+    	event.title = "Poker Night";
+    	event.eventDescription = "Low stakes poker game";
+    	event.location = "Ohio Union";
+    	event.category = 10;	     
+    	event.startTime = "2013-05-01 15:30";
+    	event.endTime = "2013-05-01 17:30";
+    	event.confirmationStatus = 1;
+    	event.thresholdNumber = 4;
+    	
+        eventGateway = EventGateway.create(event);
+    	eventGateway.insert();
+    	
+    	eventGateway.eventDescription = "modified description";
+    	
+    	/**Test code to pull back a single event **/
+    	EventFinder eventFinder =  new EventFinder();
+        eventGateway = eventFinder.findEvent(3214546);
+        System.out.println(eventGateway.eventDescription);
+        
+        
+        /** Test code to pull back a collection of events */
+     	List<EventGateway> eventSet = new ArrayList<EventGateway>();
+     	eventSet = eventFinder.findEventsByCategory(10);
+     	
+     	for(int i=0;i<eventSet.size();i++){
+     	    System.out.println(eventSet.get(i).category);
+     	} 
+    	
     	
          //modification of values and full update
     	eventGateway.title = "modified title";
@@ -131,6 +190,7 @@ public class CommandLine {
     	eventGateway.confirmationStatus = 0;
     	eventGateway.thresholdNumber = 3;
     	eventGateway.update();
+    	
     	
     	//remove the record from the table
     	

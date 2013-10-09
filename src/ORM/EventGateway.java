@@ -64,6 +64,22 @@ public class EventGateway {
     	
     	return eventGateway;
     }
+    
+    public static EventGateway load(ResultSet rs) throws SQLException{
+    	EventGateway eventGateway = new EventGateway();
+    	
+    	eventGateway.eventId = rs.getLong(1);
+    	eventGateway.title = rs.getString(2);
+    	eventGateway.eventDescription = rs.getString(3);
+    	eventGateway.location = rs.getString(4);
+    	eventGateway.category = rs.getInt(5);
+    	eventGateway.startTime = rs.getString(6);
+    	eventGateway.endTime = rs.getString(7);
+    	eventGateway.confirmationStatus = rs.getInt(8);
+    	eventGateway.thresholdNumber = rs.getInt(9);
+    	
+    	return eventGateway;
+    }
 
     /** 
      * Insert's the event into the database. 

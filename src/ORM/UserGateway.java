@@ -60,6 +60,22 @@ public class UserGateway {
     	
     	return userGateway;
     }
+    
+    public static UserGateway load(ResultSet rs) throws SQLException{
+    	UserGateway userGateway = new UserGateway();
+    	
+    	userGateway.userId = rs.getLong(1);
+    	userGateway.handle = rs.getString(2);
+    	userGateway.firstName = rs.getString(3);
+    	userGateway.lastName = rs.getString(4);
+    	userGateway.email = rs.getString(5);
+    	userGateway.password = rs.getString(6);
+    	userGateway.rating = rs.getFloat(7);
+    	userGateway.notificationPreference = rs.getBoolean(8);
+    	
+    	return userGateway;
+    }
+
 
     /** 
      * Insert's the user into the database. 
