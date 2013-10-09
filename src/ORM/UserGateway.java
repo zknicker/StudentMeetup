@@ -79,14 +79,21 @@ public class UserGateway {
     /** 
      * Updates the record in the database for this user. 
      */
-    public void update() {
+    public void update() throws SQLException {
+    	Statement statement = connection.createStatement();
 
+        statement.execute("UPDATE USERS SET HANDLE = '" + handle + "', FIRST_NAME = '" + firstName + "', LAST_NAME = '" + 
+    			           lastName + "', PASSWORD = '" + password + "', EMAIL = '" + email + "', RATING = " + rating +
+    			           ", NOTIFICATION_PREFERENCE = " + ((Boolean)notificationPreference).toString() + " WHERE USER_ID = " + userId);
     }
 
     /** 
      * Delete this record of the user from the database. 
      */
-    public void delete() {
+    public void delete()  throws SQLException { 
+    	Statement statement = connection.createStatement();
+   	 statement.execute("DELETE FROM USERS WHERE USER_ID = " + userId);
+        statement.close() ;
 
     }
 }
