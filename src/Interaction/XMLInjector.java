@@ -2,21 +2,14 @@ package Interaction;
 
 import ORM.*;
 import User.User;
-import DataHandler.DataInjector;
+import xml.DataInjector;
 import Event.Event;
 
 import java.sql.Connection;
 import java.sql.Statement;
-import java.util.*;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
-
-import org.w3c.dom.Attr;
-import org.w3c.dom.NodeList;
-import javax.xml.parsers.*;
-
 
 
 public class XMLInjector {

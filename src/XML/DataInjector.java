@@ -1,4 +1,4 @@
-package DataHandler;
+package xml;
 import ORM.*;
 import User.User;
 import Event.Event;

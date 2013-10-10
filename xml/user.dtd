@@ -1,0 +1,14 @@
+<!ELEMENT users (user+)>
+<!ELEMENT user (username,firstName,lastName,password,email,preferences)>
+<!ATTLIST user 
+	id			CDATA	#REQUIRED
+>
+
+<!ELEMENT username (#PCDATA)>
+<!ELEMENT firstName (#PCDATA)>
+<!ELEMENT lastName (#PCDATA)>
+<!ELEMENT password (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+
+<!ELEMENT preferences (emailNotifications)>
+<!ELEMENT emailNotifications (#PCDATA)>

@@ -1,0 +1,14 @@
+<!ELEMENT events (event+)>
+<!ELEMENT event (title,description,location,category,threshold,status)>
+<!ATTLIST event 
+	id			CDATA	#REQUIRED
+	startTime	CDATA	#REQUIRED
+	endTime		CDATA 	#REQUIRED
+>
+
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT location (#PCDATA)>
+<!ELEMENT category (#PCDATA)>
+<!ELEMENT threshold (#PCDATA)>
+<!ELEMENT status (#PCDATA)>

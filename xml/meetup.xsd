@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="users">
+	 <xs:complexType>
+		<xs:sequence>
+			<xs:element name="user" maxOccurs="unbounded">
+				 <xs:complexType>
+					<xs:sequence>
+						<xs:element name="username" type="xs:string"/>
+						<xs:element name="firstName" type="xs:string"/>
+						<xs:element name="lastName" type="xs:string"/>
+						<xs:element name="password" type="xs:string"/>
+						<xs:element name="email" type="emailAddress"/>
+						<xs:element name="preferences">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="emailNotifications" type="xs:boolean"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attribute name="id" type="xs:positiveInteger" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="events">
+	 <xs:complexType>
+		<xs:sequence>
+			<xs:element name="event" maxOccurs="unbounded">
+				 <xs:complexType>
+					<xs:sequence>
+						<xs:element name="title" type="xs:string"/>
+						<xs:element name="description" type="xs:string"/>
+						<xs:element name="location" type="xs:string"/>
+						<xs:element name="category" type="xs:string"/>
+						<xs:element name="threshold" type="xs:positiveInteger"/>
+						<xs:element name="status" type="xs:positiveInteger"/>
+					</xs:sequence>
+					<xs:attribute name="id" type="xs:positiveInteger" use="required"/>
+					<xs:attribute name="startTime" type="xs:positiveInteger" use="required"/>
+					<xs:attribute name="endTime" type="xs:positiveInteger" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:simpleType name="emailAddress">
+    <xs:restriction base="xs:string">
+        <xs:pattern value="([0-9a-zA-Z]([-\.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})"/>
+    </xs:restriction>
+</xs:simpleType>
+
+</xs:schema>

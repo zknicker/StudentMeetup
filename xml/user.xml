@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE users SYSTEM "user.dtd">
+<users>
+	<user id="889923">
+		<username>Zach</username>
+		<firstName>Zach</firstName>
+		<lastName>Knickerbocker</lastName>
+		<password>324234234234</password>
+		<email>zknicker@gmail.com</email>
+		<preferences>
+			<emailNotifications>true</emailNotifications>
+		</preferences>
+	</user>
+	<user id="8899234567">
+		<username>Dave</username>
+		<firstName>Dave</firstName>
+		<lastName>Holmes</lastName>
+		<password>mypass</password>
+		<email>holmes@somesite.com</email>
+		<preferences>
+			<emailNotifications>false</emailNotifications>
+		</preferences>
+	</user>
+</users>

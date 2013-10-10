@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE events SYSTEM "event.dtd">
+<events>
+	<event id="12345" startTime="1230716348761" endTime="1230716348761">
+		<title>Baseball Game</title>
+		<description>This is a fun American game.</description>
+		<location>The oval.</location>
+		<category>Sports</category>
+		<threshold>12</threshold>
+		<status>3</status>
+	</event>
+	<event id="12345" startTime="1230716348761" endTime="1230716348761">
+		<title>Baseball Game</title>
+		<description>This is a fun American game.</description>
+		<location>The oval.</location>
+		<category>Sports</category>
+		<threshold>12</threshold>
+		<status>3</status>
+	</event>
+</events>
