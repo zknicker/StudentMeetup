@@ -111,7 +111,7 @@ public class EventGateway {
     }
 
     /** 
-     * Updates the record in the database for this user. 
+     * Updates the record in the database for this event.
      */
     public void update() throws SQLException {
     	Statement statement = connection.createStatement();
