@@ -1,4 +1,4 @@
-package xml;
+package XML;
 
 /**
  * Exception thrown when XML is determined to be invalid.

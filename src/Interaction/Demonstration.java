@@ -1,5 +1,5 @@
 package Interaction;
-import xml.DataInjector;
+import XML.DataInjector;
 import Event.Event;
 import ORM.*;
 import User.User;

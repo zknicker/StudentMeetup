@@ -1,15 +1,16 @@
 package Interaction;
 
-import ORM.*;
-import User.User;
-import xml.DataInjector;
 import Event.Event;
+import ORM.DatabaseConnection;
+import ORM.EventGateway;
+import ORM.UserGateway;
+import User.User;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import XML.DataInjector;
 
 import java.sql.Connection;
 import java.sql.Statement;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 
 
 public class XMLInjector {
