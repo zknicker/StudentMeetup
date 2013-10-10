@@ -19,7 +19,7 @@ public class Event {
     public String location;
     
     /** Represents the category of the event (e.g sports, cards, tv) */
-    public int category;
+    public String category;
 
     /** The starting time of the event. */
     public String startTime;

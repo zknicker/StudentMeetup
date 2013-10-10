@@ -30,18 +30,19 @@ public class EventFinder {
        
         EventGateway eventGateway = EventGateway.load(results);
         statement.close();
+        
+        return eventGateway;
    
-		return eventGateway;
 	}
 	
 	
-	public List<EventGateway> findEventsByCategory(int category) throws SQLException {
+	public List<EventGateway> findEventsByCategory(String category) throws SQLException {
 		
 		Connection connection = DatabaseConnection.getDatabaseConnection();
         Statement statement = connection.createStatement();
   	
         List<EventGateway> result = new ArrayList<EventGateway>();
-        ResultSet results = statement.executeQuery("SELECT * FROM EVENTS WHERE CATEGORY = " + category) ;
+        ResultSet results = statement.executeQuery("SELECT * FROM EVENTS WHERE CATEGORY = '" + category + "'") ;
        
         while (results.next())
         {

@@ -26,7 +26,7 @@ public class EventGateway {
     public String location;
     
     /** Represents the category of the event (e.g sports, cards, tv) */
-    public int category;
+    public String category;
 
     /** The starting time of the event. */
     public String startTime;
@@ -72,7 +72,7 @@ public class EventGateway {
     	eventGateway.title = rs.getString(2);
     	eventGateway.eventDescription = rs.getString(3);
     	eventGateway.location = rs.getString(4);
-    	eventGateway.category = rs.getInt(5);
+    	eventGateway.category = rs.getString(5);
     	eventGateway.startTime = rs.getString(6);
     	eventGateway.endTime = rs.getString(7);
     	eventGateway.confirmationStatus = rs.getInt(8);
@@ -89,7 +89,7 @@ public class EventGateway {
     public void insert() throws SQLException {
     	
     	Statement statement = connection.createStatement();
-    	String values = String.format("%d, '%s', '%s', '%s', '%d', '%s', '%s', %d, '%d'", eventId, title, eventDescription, 
+    	String values = String.format("%d, '%s', '%s', '%s', '%s', '%s', '%s', %d, '%d'", eventId, title, eventDescription, 
     			location, category, startTime, endTime, confirmationStatus, thresholdNumber);
         statement.execute("INSERT INTO EVENTS VALUES (" + values + ")"); 
         
@@ -102,7 +102,7 @@ public class EventGateway {
     public void update() throws SQLException {
     	Statement statement = connection.createStatement();
         statement.execute("UPDATE EVENTS SET TITLE = '" + title + "', DESCRIPTION = '" + eventDescription + "', LOCATION = '" + 
-    			           location + "', CATEGORY = " + category + ", END_TIME = '" + endTime + "', START_TIME = '" + startTime +
+    			           location + "', CATEGORY = '" + category + "', END_TIME = '" + endTime + "', START_TIME = '" + startTime +
     			           "', STATUS = " + confirmationStatus + ", THRESHOLD = " + thresholdNumber + " WHERE EVENT_ID = " + eventId);
         
         statement.close() ;

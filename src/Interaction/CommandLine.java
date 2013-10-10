@@ -12,6 +12,7 @@ import ORM.UserFinder;
 import ORM.EventFinder;
 import User.User;
 import Event.Event;
+import DataHandler.DataInjector;
 
 /**
  * Command Line access to the Student Meetup application.
@@ -30,6 +31,7 @@ public class CommandLine {
         Connection connection = DatabaseConnection.getDatabaseConnection();
         Statement statement = connection.createStatement();
         
+              
         // Create the Users table if it does not exist.
         statement.execute("DROP TABLE IF EXISTS USERS");
         statement.execute("CREATE TABLE IF NOT EXISTS USERS(" +
@@ -50,7 +52,7 @@ public class CommandLine {
         		"TITLE VARCHAR(255)," +
         		"DESCRIPTION VARCHAR(255)," +
         		"LOCATION VARCHAR(255)," +
-        		"CATEGORY INT," +
+        		"CATEGORY VARCHAR(255)," +
         		"START_TIME VARCHAR(255)," +
         		"END_TIME VARCHAR(255)," +
         		"STATUS INT," + 
@@ -60,6 +62,17 @@ public class CommandLine {
         statement.execute("CREATE USER IF NOT EXISTS root PASSWORD 'alpine'");
         statement.execute("GRANT ALL ON USERS TO root");
     	statement.execute("GRANT ALL ON EVENTS TO root");
+    	
+    	
+    	//Process XML files if included on command line
+    	
+/*        if (args.length > 0)	
+        {
+        	
+        }*/
+    	DataInjector dataInjector = new DataInjector();
+    	
+    	
     	
     	// Try an insert of a user.
     	Date date = new Date();
@@ -140,7 +153,7 @@ public class CommandLine {
     	event.title = "Pickup Basketball";
     	event.eventDescription = "Friendly hoops game on Friday night";
     	event.location = "Jesse Owens North";
-    	event.category = 10;	     
+    	event.category = "Sports";	     
     	event.startTime = "2013-05-01 15:30";
     	event.endTime = "2013-05-01 17:30";
     	event.confirmationStatus = 1;
@@ -154,7 +167,7 @@ public class CommandLine {
     	event.title = "Poker Night";
     	event.eventDescription = "Low stakes poker game";
     	event.location = "Ohio Union";
-    	event.category = 10;	     
+    	event.category = "Sports";	     
     	event.startTime = "2013-05-01 15:30";
     	event.endTime = "2013-05-01 17:30";
     	event.confirmationStatus = 1;
@@ -173,7 +186,7 @@ public class CommandLine {
         
         /** Test code to pull back a collection of events */
      	List<EventGateway> eventSet = new ArrayList<EventGateway>();
-     	eventSet = eventFinder.findEventsByCategory(10);
+     	eventSet = eventFinder.findEventsByCategory("Sports");
      	
      	for(int i=0;i<eventSet.size();i++){
      	    System.out.println(eventSet.get(i).category);
@@ -183,7 +196,7 @@ public class CommandLine {
          //modification of values and full update
     	eventGateway.title = "modified title";
     	eventGateway.eventDescription = "modified description";
-    	eventGateway.category = 7;
+    	eventGateway.category = "Misc.";
     	eventGateway.location = "new location";
     	eventGateway.startTime = "2004-05-01 15:30";
     	eventGateway.endTime = "2005-05-01 15:30";   	
