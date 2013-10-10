@@ -1,23 +1,25 @@
 package Interaction;
+import DataHandler.DataInjector;
+import Event.Event;
+import ORM.*;
+import User.User;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.*;
-
-import ORM.DatabaseConnection;
-import ORM.UserGateway;
-import ORM.EventGateway;
-import ORM.UserFinder;
-import ORM.EventFinder;
-import User.User;
-import Event.Event;
-import DataHandler.DataInjector;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
- * Command Line access to the Student Meetup application.
+ * A demonstration of the Student Meetup ORM layer. Creates users and events, and then does some
+ * basic management on them (e.g. delete, select).
+ *
+ * This is more or less a sandbox to do some quick tests.
+ *
+ * TODO - replace this with unit tests, and make the demonstration more significant.
  */
-public class CommandLine {
+public class Demonstration {
 
     /**
      * Main execution.
@@ -26,7 +28,7 @@ public class CommandLine {
      * @throws Exception on error in program.
      */
     public static void main(String[] args) throws Exception {
-        System.out.println("Welcome to the Student Meetup application.");
+        System.out.println("Welcome to the Student Meetup application demo.");
         
         Connection connection = DatabaseConnection.getDatabaseConnection();
         Statement statement = connection.createStatement();
