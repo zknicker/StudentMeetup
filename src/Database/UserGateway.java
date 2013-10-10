@@ -1,7 +1,6 @@
-package ORM;
+package Database;
 
 import java.sql.*;
-import java.util.Date;
 
 import User.User;
 

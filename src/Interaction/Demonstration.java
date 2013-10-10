@@ -1,7 +1,7 @@
 package Interaction;
 import XML.DataInjector;
 import Event.Event;
-import ORM.*;
+import Database.*;
 import User.User;
 
 import java.sql.Connection;
@@ -158,8 +158,8 @@ public class Demonstration {
     	event.category = "Sports";	     
     	event.startTime = "2013-05-01 15:30";
     	event.endTime = "2013-05-01 17:30";
-    	event.confirmationStatus = 1;
-    	event.thresholdNumber = 4;
+    	event.status = 1;
+    	event.threshold = 4;
     	
     	EventGateway eventGateway = EventGateway.create(event);
     	eventGateway.insert();
@@ -172,8 +172,8 @@ public class Demonstration {
     	event.category = "Sports";	     
     	event.startTime = "2013-05-01 15:30";
     	event.endTime = "2013-05-01 17:30";
-    	event.confirmationStatus = 1;
-    	event.thresholdNumber = 4;
+    	event.status = 1;
+    	event.threshold = 4;
     	
         eventGateway = EventGateway.create(event);
     	eventGateway.insert();

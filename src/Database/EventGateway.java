@@ -1,7 +1,6 @@
-package ORM;
+package Database;
 
 import java.sql.*;
-import java.util.Date;
 
 import Event.Event;
 
@@ -59,8 +58,8 @@ public class EventGateway {
     	eventGateway.category = event.category;
     	eventGateway.startTime = event.startTime;
     	eventGateway.endTime = event.endTime;
-    	eventGateway.confirmationStatus = event.confirmationStatus;
-    	eventGateway.thresholdNumber = event.thresholdNumber;
+    	eventGateway.confirmationStatus = event.status;
+    	eventGateway.thresholdNumber = event.threshold;
     	
     	return eventGateway;
     }

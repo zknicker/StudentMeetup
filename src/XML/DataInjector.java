@@ -87,8 +87,8 @@ public class DataInjector {
                     event.eventDescription = eElement.getElementsByTagName("description").item(0).getTextContent();
                     event.location = eElement.getElementsByTagName("location").item(0).getTextContent();
                     event.category = eElement.getElementsByTagName("category").item(0).getTextContent();
-                    event.confirmationStatus = Integer.parseInt(eElement.getElementsByTagName("confirmationStatus").item(0).getTextContent());
-                    event.thresholdNumber = Integer.parseInt(eElement.getElementsByTagName("thresholdNumber").item(0).getTextContent());
+                    event.status = Integer.parseInt(eElement.getElementsByTagName("status").item(0).getTextContent());
+                    event.threshold = Integer.parseInt(eElement.getElementsByTagName("threshold").item(0).getTextContent());
                 }
             }
             System.out.println("Parsing complete");

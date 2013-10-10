@@ -1,9 +1,9 @@
 package Interaction;
 
 import Event.Event;
-import ORM.DatabaseConnection;
-import ORM.EventGateway;
-import ORM.UserGateway;
+import Database.DatabaseConnection;
+import Database.EventGateway;
+import Database.UserGateway;
 import User.User;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;

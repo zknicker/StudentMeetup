@@ -28,9 +28,9 @@ public class Event {
     public String endTime;
 
     /** Details if the event has been confirmed or not. */
-    public int confirmationStatus;
+    public int status;
 
     /** The minimum number of users that must register for the event. */
-    public int thresholdNumber;
+    public int threshold;
      
 }

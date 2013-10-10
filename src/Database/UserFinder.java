@@ -1,10 +1,6 @@
-package ORM;
+package Database;
 
-import java.sql.*;
 import java.util.*;
-
-import ORM.DatabaseConnection;
-import ORM.UserGateway;
 
 
 import java.sql.Connection;

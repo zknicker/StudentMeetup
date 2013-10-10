@@ -12,6 +12,7 @@
 						<xs:element name="lastName" type="xs:string"/>
 						<xs:element name="password" type="xs:string"/>
 						<xs:element name="email" type="emailAddress"/>
+                        <xs:element name="rating" type="xs:decimal"/>
 						<xs:element name="preferences">
 							<xs:complexType>
 								<xs:sequence>
