@@ -24,7 +24,7 @@ public class UserFinder {
         ResultSet results = statement.executeQuery("SELECT * FROM USERS WHERE USER_ID = " + userId) ;
         results.next();
        
-        UserGateway userGateway = UserGateway.load(results);
+        UserGateway userGateway = UserGateway.create(results);
         statement.close();
    
 		return userGateway;
@@ -41,7 +41,7 @@ public class UserFinder {
        
         while (results.next())
         {
-        UserGateway userGateway = UserGateway.load(results);
+        UserGateway userGateway = UserGateway.create(results);
         result.add(userGateway);
         }
         statement.close();

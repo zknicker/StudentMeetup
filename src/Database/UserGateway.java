@@ -1,8 +1,11 @@
 package Database;
 
-import java.sql.*;
-
 import User.User;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Gateway methods for interacting with a user in the database.
@@ -42,8 +45,12 @@ public class UserGateway {
     private UserGateway() {
     	connection = DatabaseConnection.getDatabaseConnection();
     }
+
     /**
-     * Creates a new instance of the UserGateway using an existing User.
+     * Creates a new instance of the UserGateway from an existing domain-space User.
+     *
+     * @param user - the domain-space user.
+     * @return the populated UserGateway instance.
      */
     public static UserGateway create(User user) {
     	UserGateway userGateway = new UserGateway();
@@ -59,35 +66,43 @@ public class UserGateway {
     	
     	return userGateway;
     }
-    
-    public static UserGateway load(ResultSet rs) throws SQLException{
+
+    /**
+     * Creates a new instance of the UserGateway from a ResultSet resulting from a
+     * select query.
+     *
+     * @param row - the row returned from the select query.
+     * @return the populated UserGateway instance.
+     * @throws SQLException on error reading data the row.
+     */
+    public static UserGateway create(ResultSet row) throws SQLException{
     	UserGateway userGateway = new UserGateway();
-    	
-    	userGateway.userId = rs.getLong(1);
-    	userGateway.handle = rs.getString(2);
-    	userGateway.firstName = rs.getString(3);
-    	userGateway.lastName = rs.getString(4);
-    	userGateway.email = rs.getString(5);
-    	userGateway.password = rs.getString(6);
-    	userGateway.rating = rs.getFloat(7);
-    	userGateway.notificationPreference = rs.getBoolean(8);
-    	
+
+    	userGateway.userId = row.getLong(1);
+    	userGateway.handle = row.getString(2);
+    	userGateway.firstName = row.getString(3);
+    	userGateway.lastName = row.getString(4);
+    	userGateway.email = row.getString(5);
+    	userGateway.password = row.getString(6);
+    	userGateway.rating = row.getFloat(7);
+    	userGateway.notificationPreference = row.getBoolean(8);
+
     	return userGateway;
     }
 
 
-    /** 
-     * Insert's the user into the database. 
-     * 
-     * @throws SQLException on error in SQL syntax. 
+    /**
+     * Insert's the user into the database.
+     *
+     * @throws SQLException on error in SQL syntax.
      */
     public void insert() throws SQLException {
-    	
+
     	Statement statement = connection.createStatement();
-    	String values = String.format("%d, '%s', '%s', '%s', '%s', '%s', %f, '%s'", userId, handle, 
+    	String values = String.format("%d, '%s', '%s', '%s', '%s', '%s', %f, '%s'", userId, handle,
     			firstName, lastName, password, email, rating, ((Boolean)notificationPreference).toString());
-        statement.execute("INSERT INTO USERS VALUES (" + values + ")"); 
-        
+        statement.execute("INSERT INTO USERS VALUES (" + values + ")");
+
         statement.close() ;
     }
 

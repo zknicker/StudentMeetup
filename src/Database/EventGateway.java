@@ -1,8 +1,11 @@
 package Database;
 
-import java.sql.*;
-
 import Event.Event;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Gateway methods for interacting with an event in the database.
@@ -45,8 +48,12 @@ public class EventGateway {
     private EventGateway() {
     	connection = DatabaseConnection.getDatabaseConnection();
     }
+
     /**
-     * Creates a new instance of the UserGateway using an existing User.
+     * Creates a new instance of the EventGateway from an existing domain-space Event.
+     *
+     * @param event - the domain-space user.
+     * @return the populated EventGateway instance.
      */
     public static EventGateway create(Event event) {
     	EventGateway eventGateway = new EventGateway();
@@ -63,19 +70,27 @@ public class EventGateway {
     	
     	return eventGateway;
     }
-    
-    public static EventGateway load(ResultSet rs) throws SQLException{
+
+    /**
+     * Creates a new instance of the EventGateway from a ResultSet resulting from a
+     * select query.
+     *
+     * @param row - the row returned from the select query.
+     * @return the populated EventGateway instance.
+     * @throws SQLException on error reading data the row.
+     */
+    public static EventGateway create(ResultSet row) throws SQLException{
     	EventGateway eventGateway = new EventGateway();
     	
-    	eventGateway.eventId = rs.getLong(1);
-    	eventGateway.title = rs.getString(2);
-    	eventGateway.eventDescription = rs.getString(3);
-    	eventGateway.location = rs.getString(4);
-    	eventGateway.category = rs.getString(5);
-    	eventGateway.startTime = rs.getString(6);
-    	eventGateway.endTime = rs.getString(7);
-    	eventGateway.confirmationStatus = rs.getInt(8);
-    	eventGateway.thresholdNumber = rs.getInt(9);
+    	eventGateway.eventId = row.getLong(1);
+    	eventGateway.title = row.getString(2);
+    	eventGateway.eventDescription = row.getString(3);
+    	eventGateway.location = row.getString(4);
+    	eventGateway.category = row.getString(5);
+    	eventGateway.startTime = row.getString(6);
+    	eventGateway.endTime = row.getString(7);
+    	eventGateway.confirmationStatus = row.getInt(8);
+    	eventGateway.thresholdNumber = row.getInt(9);
     	
     	return eventGateway;
     }

@@ -1,8 +1,7 @@
 package Event;
-import java.util.Date;
-
 /**
- * Defines a user.
+ * An event in the application. Also persisted in a database; this can be managed using
+ * the ORM classes EventGateway and EventFinder.
  */
 public class Event {
 	

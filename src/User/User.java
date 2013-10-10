@@ -1,7 +1,8 @@
 package User;
 
 /**
- * Defines a user.
+ * A user in the application.  Also persisted in a database; this can be managed using
+ * the ORM classes UserGateway and UserFinder.
  */
 public class User {
 	
