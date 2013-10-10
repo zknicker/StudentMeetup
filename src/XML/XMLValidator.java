@@ -31,14 +31,10 @@ public class XMLValidator {
      * @throws XMLParsingException on error reading/parsing XML.
 	 */
 	private void validate(File xmlFile, File schemaFile) throws InvalidXMLException, XMLParsingException {
-
 		Document document = getParsedXMLDocument(xmlFile);
         Schema schema = getSchema(schemaFile);
-
-	    // Create the XML validator using the schema.
 	    Validator validator = schema.newValidator();
-	
-	    // Validate the XML document. XML is valid if no exceptions are thrown.
+
 	    try {
 	        validator.validate(new DOMSource(document));
 
