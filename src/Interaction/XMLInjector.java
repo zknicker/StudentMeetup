@@ -65,21 +65,18 @@ public class XMLInjector {
 		Document theDocument = DataInjector.FileRootDocumentGet(args[i]);
 		Node documentNode = DataInjector.DocumentNodeGet(theDocument);
 		
-		if ("user".equals(documentNode.getNodeName()))
+		if ("users".equals(documentNode.getNodeName()))
 		{
-			 User user = new User();
-			 user = dataInjector.ParseUserXML(args[i]);
-			 UserGateway userGateway = UserGateway.create(user);
-		     userGateway.insert();
+
+			dataInjector.ParseUserXML(args[i]);
+
 		}
 		
-		else if ("event".equals(documentNode.getNodeName()))
+		else if ("events".equals(documentNode.getNodeName()))
 		{
-			 Event event = new Event();
-			 event = dataInjector.ParseEventXML(args[i]);
-			 EventGateway eventGateway = EventGateway.create(event);
-			 eventGateway.insert();
-			}
+			 dataInjector.ParseEventXML(args[i]);
+			 
+		}
 		else 
 			System.out.println("Unknown XML document.");
 		
