@@ -9,7 +9,7 @@
 		<threshold>12</threshold>
 		<status>3</status>
 	</event>
-	<event id="12345" startTime="1230716348761" endTime="1230716348761">
+	<event id="123456" startTime="1230716348761" endTime="1230716348761">
 		<title>Baseball Game</title>
 		<description>This is a fun American game.</description>
 		<location>The oval.</location>
