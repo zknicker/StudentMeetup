@@ -49,6 +49,28 @@ public class XMLInjector {
         		"THRESHOLD INT" +
         		")");
         
+        // Create the Subscriptions table if it does not exist.
+        statement.execute("DROP TABLE IF EXISTS SUBSCRIPTIONS");
+        statement.execute("CREATE TABLE IF NOT EXISTS SUBSCRIPTIONS(" +
+        		"USER_ID LONG," +
+        		"EVENT_ID LONG," +
+        		"EMAIL_NOTIFY BOOLEAN," +
+        		"ATTENDING_STATUS INT," +
+        		"FOREIGN KEY (USER_ID) REFERENCES USERS(USER_ID)," +
+        		"FOREIGN KEY (EVENT_ID) REFERENCES EVENTS(EVENT_ID)," +
+        		"PRIMARY KEY (USER_ID, EVENT_ID)" +
+        		")");
+        
+        //Create the User Relationships table if it does not exist.
+        statement.execute("DROP TABLE IF EXISTS USER_RELATIONSHIPS");
+        statement.execute("CREATE TABLE IF NOT EXISTS USER_RELATIONSHIPS(" +
+        		"USER_ID LONG," +
+        		"RELATED_USER_ID LONG," +
+        		"STATUS INT," +
+        		"FOREIGN KEY (USER_ID) REFERENCES USERS(USER_ID)," +
+        		"FOREIGN KEY (RELATED_USER_ID) REFERENCES USERS	(USER_ID)," +
+        		"PRIMARY KEY (USER_ID, RELATED_USER_ID)" +
+        		")");
         statement.execute("CREATE USER IF NOT EXISTS root PASSWORD 'alpine'");
         statement.execute("GRANT ALL ON USERS TO root");
     	statement.execute("GRANT ALL ON EVENTS TO root");

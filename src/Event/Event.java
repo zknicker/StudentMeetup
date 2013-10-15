@@ -26,7 +26,7 @@ public class Event {
     /** The ending time of the event. */
     public String endTime;
 
-    /** Details if the event has been confirmed or not. */
+    /** Details if the event has been confirmed or not. (open / closed / confirmed) */
     public int status;
 
     /** The minimum number of users that must register for the event. */
