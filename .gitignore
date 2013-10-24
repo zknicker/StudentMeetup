@@ -8,13 +8,16 @@
 # IntelliJ #
 *.iml
 .idea
-out
 
 # Eclipse #
 bin
 .classpath
 .project
+out
 
 # Restore ignored H2 files #
 !db/h2/bin
 !db/h2/bin/*.jar
+
+# JARS #
+!jars/*.jar

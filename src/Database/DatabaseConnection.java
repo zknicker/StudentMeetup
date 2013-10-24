@@ -11,7 +11,7 @@ public class DatabaseConnection {
 	private static Connection instance;
 	
     /** URL of the H2 database. */
-    private static String URL = "jdbc:h2:tcp://localhost/~/test";
+    private static String URL = "jdbc:h2:tcp://localhost/~/studentmeetup";
 
     /** Users to authenticate to the database with. */
     private static String USER = "sa";
