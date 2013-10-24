@@ -12,6 +12,12 @@ import XML.DataInjector;
 import java.sql.Connection;
 import java.sql.Statement;
 
+/**
+ * Takes in command line arguments and then uses the XMLInjector class to inject the
+ * XML into domain-space classes, and then persists those objects in the database.
+ * 
+ * The command line arguments should be relative paths to the XML files.
+ */
 public class XMLInjector {
 
 	public static void main(String[] args) throws Exception {
