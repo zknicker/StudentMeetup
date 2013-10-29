@@ -1,9 +1,6 @@
 StudentMeetup
 =============
 
-### Getting Started
-Download the repository.
-
 ### Compiling And Running
 1. Configure your build path in MeetupServlets.
   1. EAR Libraries
