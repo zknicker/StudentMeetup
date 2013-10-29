@@ -19,6 +19,9 @@ out
 !db/h2/bin
 !db/h2/bin/*.jar
 
+# Restore the servlets JAR #
+!MeetupServlets/WebContent/**/*.jar
+
 # JARS #
 !jars/*.jar
 
