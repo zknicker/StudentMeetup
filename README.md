@@ -1,8 +1,6 @@
 StudentMeetup
 =============
 
-# Student Meetup Web Application
-
 ### Getting Started
 Download the repository.
 
