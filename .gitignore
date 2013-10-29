@@ -11,6 +11,7 @@
 
 # Eclipse #
 bin
+.metadata
 .classpath
 .project
 out
