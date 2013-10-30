@@ -21,16 +21,28 @@ public class CreateEventServlet extends HttpServlet {
 	private static final long serialVersionUID = 3983414797262131110L;
 	
 	@EJB
-	private HelloService helloService;
+	private HelloService eventCreationService;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
+
 		PrintWriter writer = resp.getWriter();
 		writer.println(getHeader());
-		writer.println("<h1>" + helloService.createEvent("Zach Knickerbocker")
-				+ "</h1>");
+		writer.println("<h1>Event Creator</h1><hr><br>");
+		
+		String eventName = req.getParameter("event_name");
+		if (eventName != null) {
+			String eventInfo = eventCreationService.createEvent(eventName);
+			writer.println("Created a new event:<br> " + eventInfo + "<br><br>");
+		}
+		
+		writer.println("<b>Create an event:</b><br>");
+		writer.println("<form name=\"event_form\">");
+		writer.println("<input type=\"text\" name=\"event_name\" />");
+		writer.println("<input type=\"submit\" value=\"Submit\"/>");
+		writer.println("</form>");
+		
 		writer.println(getFooter());
 		writer.close();
 	}
