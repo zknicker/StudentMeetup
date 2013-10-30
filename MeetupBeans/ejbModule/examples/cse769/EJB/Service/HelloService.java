@@ -16,10 +16,10 @@ public class HelloService {
 		
 		long currentTime = new Date().getTime();
 		newEntity.setId(currentTime); //No need to set if auto-generated
-		String message = "Hello Mr. " + name + currentTime + "!";
+		String message = "Your name is: " + name + ", and the time is: " + currentTime + "!";
 		newEntity.setTheMessage(message);
 		em.persist(newEntity);
 		long beanID = newEntity.getId();
-		return "Servlet Session Bean Entity " + "ID =" + beanID + " " + message;
+		return "ID =" + beanID + "\n" + message;
 	}
 }
