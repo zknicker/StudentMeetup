@@ -13,8 +13,8 @@
 bin
 .metadata
 .classpath
-.project
 out
+RemoteSystemsTempFiles/*
 
 # Restore ignored H2 files #
 !db/h2/bin

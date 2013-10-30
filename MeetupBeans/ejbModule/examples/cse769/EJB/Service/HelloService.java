@@ -16,7 +16,7 @@ public class HelloService {
 		
 		long currentTime = new Date().getTime();
 		newEntity.setId(currentTime); //No need to set if auto-generated
-		String message = "Hello my home dog " + name + currentTime + "!";
+		String message = "Hello Mr. " + name + currentTime + "!";
 		newEntity.setTheMessage(message);
 		em.persist(newEntity);
 		long beanID = newEntity.getId();

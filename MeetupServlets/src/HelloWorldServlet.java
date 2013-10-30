@@ -3,9 +3,6 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.inject.Inject;
-import javax.naming.Context;
-import javax.naming.InitialContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -54,7 +51,7 @@ public class HelloWorldServlet extends HttpServlet {
 	
 	   PrintWriter writer = resp.getWriter();
        writer.println(PAGE_HEADER);
-       writer.println("<h1>" + helloService.createHelloMessage("Rajiv") + "</h1>");
+       writer.println("<h1>" + helloService.createHelloMessage("Zach") + "</h1>");
        writer.println(PAGE_FOOTER);
        writer.close();
    }
