@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#create-event.xhtml"
+  PATH="/create-event.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#create-event.xhtml:0" NAME="item"
+   PATH="/create-event.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="true::#welcome.xhtml" NAME="output"
+    PATH="/welcome.xhtml" TARGET="rules:#welcome.xhtml" TITLE="true" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#welcome.xhtml" PATH="/welcome.xhtml"
+  SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>
