@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 
-import services.CreateEventService;
+import services.*;
 
 /**
  * Creates events.

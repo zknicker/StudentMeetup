@@ -17,11 +17,12 @@ out
 RemoteSystemsTempFiles/*
 
 # Restore ignored H2 files #
-!db/h2/bin
-!db/h2/bin/*.jar
+!db/h2/
+!db/h2/*.jar
 
 # Restore the servlets JAR #
 !MeetupServlets/WebContent/**/*.jar
+!MeetupUI/WebContent/**/*.jar
 
 # JARS #
 !jars/*.jar
