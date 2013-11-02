@@ -14,15 +14,16 @@ public class CreateEventService {
     @PersistenceContext(unitName="create-event")
 	EntityManager em;
 
-	public String createEvent(String name) {
+	public String createEvent(String name, String description) {
 		Event event = new Event();
 		
 		event.setName(name);
+		event.setDescription(description);
 		
 		em.persist(event);
 		long beanID = event.getId();
 		
-		return "ID =" + beanID + "<br>Name: " + name;
+		return "ID =" + beanID + "<br>Name: " + name + "<br>Description: " + description;
 	}
 	
 	public List<String> getAllEvents() {
@@ -33,7 +34,7 @@ public class CreateEventService {
 			results.add("No events found.");
 		} else {
 			for (Event event : events) {
-				results.add("ID: " + event.getId() + ", Name: " + event.getName());
+				results.add("ID: " + event.getId() + ", Name: " + event.getName() + ", Description: " + event.getDescription());
 			}
 		}
 		

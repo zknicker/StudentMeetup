@@ -16,6 +16,8 @@ public class CreateEvent
 	
 	/** Event name. */
     private String name;
+	/** Event description. */
+    private String description;
 
     public String getName () {
         return name;
@@ -24,6 +26,14 @@ public class CreateEvent
     public void setName (final String name) {
         this.name = name;
     }
+    
+    public String getDescription () {
+        return description;
+    }
+    
+    public void setDescription (final String description) {
+        this.description = description;
+    }
 
     public String getIntroText() {
     	return "Create a new event.";
@@ -31,7 +41,7 @@ public class CreateEvent
     
 	public boolean create() {
 		System.out.println("Creating event with name " + name);
-		String eventInfo = createEventService.createEvent(name);
+		String eventInfo = createEventService.createEvent(name,description);
 		return true;
 	}
 	

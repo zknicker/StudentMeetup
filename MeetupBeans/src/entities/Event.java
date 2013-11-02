@@ -19,6 +19,10 @@ public class Event implements Serializable{
 	@Column (name="NAME")
 	private String name;
 	
+	@Column (name="DESCRIPTION")
+	private String description;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -33,5 +37,13 @@ public class Event implements Serializable{
 	
 	public void setName(String newName) {
 		name = newName;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String newDescription) {
+		description = newDescription;
 	}
 }

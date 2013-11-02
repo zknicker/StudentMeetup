@@ -13,6 +13,8 @@
             <h:panelGrid columns="2">
                 <h:outputText value="Name"></h:outputText>
                 <h:inputText value="#{createEvent.name}"></h:inputText>
+                <h:outputText value="Description"></h:outputText>
+                <h:inputText value="#{createEvent.description}"></h:inputText>
             </h:panelGrid>
             <h:commandButton value="Create Event" action="#{createEvent.create()}"></h:commandButton>
         </h:form>
