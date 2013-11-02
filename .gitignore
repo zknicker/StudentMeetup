@@ -26,6 +26,3 @@ RemoteSystemsTempFiles/*
 
 # JARS #
 !jars/*.jar
-
-# Jboss #
-jboss
