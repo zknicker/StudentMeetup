@@ -1,20 +1,55 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
 
+  
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core">
+    <body>
+ 		<script>
+		  $(function() {
+			    $( "#datepicker" ).datepicker();
 
+		  });
+  		</script>
+  	
+  		</body>
+
+    
+   
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
     <ui:define name="content">
         <h:form>
         	<h:outputLabel value="Welcome. #{createEvent.getIntroText()}"></h:outputLabel>
             <h:panelGrid columns="2">
-                <h:outputText value="Name"></h:outputText>
+                <h:outputText value="Name:"></h:outputText>
                 <h:inputText value="#{createEvent.name}"></h:inputText>
-                <h:outputText value="Description"></h:outputText>
+                <h:outputText value="Description:"></h:outputText>
                 <h:inputText value="#{createEvent.description}"></h:inputText>
+            </h:panelGrid>
+            <h:panelGrid columns="4">
+                <h:outputText value="Event Date (mm/dd/yyyy):"></h:outputText>      
+                <h:inputText value="#{createEvent.month}" size="1"></h:inputText>
+                <h:inputText value="#{createEvent.day}" size="1"></h:inputText>
+                <h:inputText value="#{createEvent.year}" size="3"></h:inputText>                                
+            </h:panelGrid>
+            <h:panelGrid columns="3">
+                <h:outputText value="Start Time (hh/mm):"></h:outputText>      
+                <h:inputText value="#{createEvent.starthour}" size="1"></h:inputText>
+                <h:inputText value="#{createEvent.startminute}" size="1"></h:inputText>
+                <h:outputText value="End Time (HH/mm):"></h:outputText>      
+                <h:inputText value="#{createEvent.endhour}" size="1"></h:inputText>
+                <h:inputText value="#{createEvent.endminute}" size="1"></h:inputText>                         
+            </h:panelGrid>
+                 <h:panelGrid columns="2">
+                <h:outputText value="Location:"></h:outputText>
+                <h:inputText value="#{createEvent.location}"></h:inputText>
+                <h:outputText value="Category:"></h:outputText>
+                <h:inputText value="#{createEvent.category}"></h:inputText>
+                <h:outputText value="Minimum Attendees:"></h:outputText>
+                <h:inputText value="#{createEvent.threshold}" size="1"></h:inputText>
             </h:panelGrid>
             <h:commandButton value="Create Event" action="#{createEvent.create()}"></h:commandButton>
         </h:form>
