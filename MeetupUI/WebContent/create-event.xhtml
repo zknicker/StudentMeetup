@@ -51,7 +51,10 @@
                 <h:outputText value="Minimum Attendees:"></h:outputText>
                 <h:inputText value="#{createEvent.threshold}" size="1"></h:inputText>
             </h:panelGrid>
+            <h:panelGrid columns="2">
             <h:commandButton value="Create Event" action="#{createEvent.create()}"></h:commandButton>
+            <h:commandButton value="View Calendar" action="calendar"></h:commandButton>
+            </h:panelGrid>
         </h:form>
     </ui:define>
 </ui:composition>

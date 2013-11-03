@@ -1,0 +1,31 @@
+<!-- Plain HTML page that kicks us into the main page -->
+
+<html
+xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+    
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+    <ui:define name="content">
+        <h:outputLabel value="12:00 AM:"></h:outputLabel>
+        <ul>
+        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(2013, 12, 01, 0)}">
+        		<li>#{elem}</li>
+        	</ui:repeat>
+        </ul>
+                <h:outputLabel value="01:00 AM:"></h:outputLabel>
+                <ul>
+        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(2013, 12, 01, 1)}">
+        		<li>#{elem}</li>
+        	</ui:repeat>
+        </ul>
+                <h:outputLabel value="02:00 AM:"></h:outputLabel>
+                <ul>
+        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(2013, 12, 01, 2)}">
+        		<li>#{elem}</li>
+        	</ui:repeat>
+        </ul>
+    </ui:define>
+</ui:composition>
+</html>

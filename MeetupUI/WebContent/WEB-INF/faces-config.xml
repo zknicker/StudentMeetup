@@ -7,6 +7,11 @@
   <managed-bean-class>events.CreateEvent</managed-bean-class>
   <managed-bean-scope>application</managed-bean-scope>
  </managed-bean>
+  <managed-bean>
+  <managed-bean-name>Calendar</managed-bean-name>
+  <managed-bean-class>calendar.Calendar</managed-bean-class>
+  <managed-bean-scope>application</managed-bean-scope>
+ </managed-bean>
  <navigation-rule>
  	<display-name>create-event.xhtml</display-name>
  	<from-view-id>/create-event.xhtml</from-view-id>
