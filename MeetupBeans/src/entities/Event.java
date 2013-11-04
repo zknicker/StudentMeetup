@@ -40,6 +40,7 @@ public class Event implements Serializable{
 	
 	
 	private String month,day,year,starthour,startminute,endhour,endminute;
+	private String dayToView,monthToView,yearToView;
 	
 	public Long getId() {
 		return id;
@@ -152,4 +153,27 @@ public class Event implements Serializable{
 	public int getThreshold() {
 		return threshold;
 	}
+	
+	public void setMonthToView(String newMonthToView) {
+		monthToView = newMonthToView;
+	}
+	public String getMonthToView() {
+		return monthToView;
+	}
+	
+	public void setDayToView(String newDayToView) {
+		dayToView = newDayToView;
+	}
+	public String getDayToView() {
+		return dayToView;
+	}
+	
+	public void setYearToView(String newYearToView) {
+		yearToView = newYearToView;
+	}
+	public String getYearToView() {
+		return yearToView;
+	}
+	
+	
 }

@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 import entities.*;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 @Stateless
@@ -45,4 +46,6 @@ public class CalendarService {
 
 		return results;
 	}
+	
+	
 }
