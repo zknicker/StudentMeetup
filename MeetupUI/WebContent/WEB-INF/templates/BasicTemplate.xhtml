@@ -1,14 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets">
 <head>
-<title><ui:insert name="title">Facelets Tutorial</ui:insert></title>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<link href="css/ui-lightness/jquery-ui-1.10.3.custom.css" rel="stylesheet"></link>
-	<script src="js/jquery-1.9.1.js"></script>
-	<script src="js/jquery-ui-1.10.3.custom.js"></script>
-
+	<title>Student Meetup</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<ui:include src="/WEB-INF/css/master.css" />
+	<link href="http://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -19,7 +15,7 @@
     </ui:insert>
 </div>
 
-<div id="content">
+<div id="content" class="page-content">
     <ui:insert name="content">
     </ui:insert>
 </div>
