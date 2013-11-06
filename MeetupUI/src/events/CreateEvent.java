@@ -30,9 +30,7 @@ public class CreateEvent
     private String category;
 	/** Event Threshold. */
     private String threshold;
-    
-	private String dayToView,monthToView,yearToView;
-	
+    	
     public String getName () {
         return name;
     }
@@ -128,28 +126,7 @@ public class CreateEvent
     public void setThreshold (final String threshold) {
         this.threshold = threshold;
     }
-	public void setMonthToView(String newMonthToView) {
-		monthToView = newMonthToView;
-	}
-	public String getMonthToView() {
-		return monthToView;
-	}
 	
-	public void setDayToView(String newDayToView) {
-		dayToView = newDayToView;
-	}
-	public String getDayToView() {
-		return dayToView;
-	}
-	
-	public void setYearToView(String newYearToView) {
-		yearToView = newYearToView;
-	}
-	public String getYearToView() {
-		return yearToView;
-	}
-
-
     public String getIntroText() {
     	return "Create a new event.";
     }

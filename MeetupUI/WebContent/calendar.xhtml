@@ -1,163 +1,50 @@
-<!-- Plain HTML page that kicks us into the main page -->
-
-<html
-xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core"
-       xmlns:c="http://java.sun.com/jstl/core">
-    
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<body>
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
     <ui:define name="content">
-    <ui:param name="year" value="#{createEvent.yearToView}" />
-    <ui:param name="month" value="#{createEvent.monthToView}" />
-    <ui:param name="day" value="#{createEvent.dayToView}" />
-        <h:outputLabel value="Events for Day of #{createEvent.monthToView} / #{createEvent.dayToView} / #{createEvent.yearToView}:"></h:outputLabel>
-        <h:outputText value="&#10;" />
-        <h:outputLabel value="12:00 AM:"></h:outputLabel>
-        <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 00)}">
-        		<li>#{elem}</li>
-        	</ui:repeat>
-        </ul>
-                <h:outputLabel value="01:00 AM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 01)}">
-        		<li>#{elem}</li>
-        	</ui:repeat>
-        </ul>
-                <h:outputLabel value="02:00 AM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 02)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
-                        <h:outputLabel value="03:00 AM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 03)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
-                        <h:outputLabel value="04:00 AM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 04)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
-                        <h:outputLabel value="05:00 AM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 05)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
-                        <h:outputLabel value="06:00 AM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 06)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
-                        <h:outputLabel value="07:00 AM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 07)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
-                        <h:outputLabel value="08:00 AM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 08)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
-                        <h:outputLabel value="09:00 AM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 09)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
-                        <h:outputLabel value="10:00 AM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 10)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
-                        <h:outputLabel value="11:00 AM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 11)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
-                                <h:outputLabel value="12:00 PM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 12)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
-                                <h:outputLabel value="1:00 PM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 13)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
-                                <h:outputLabel value="2:00 PM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 14)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
-                                <h:outputLabel value="3:00 PM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 15)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
-                                <h:outputLabel value="4:00 PM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 16)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
-                                <h:outputLabel value="5:00 PM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 17)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
-                                        <h:outputLabel value="6:00 PM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 18)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
-                                <h:outputLabel value="7:00 PM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 19)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
-                                <h:outputLabel value="8:00 PM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 20)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
-                                        <h:outputLabel value="09:00 PM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 21)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
-                                <h:outputLabel value="10:00 PM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 22)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
-                                <h:outputLabel value="11:00 PM:"></h:outputLabel>
-                <ul>
-        	<ui:repeat var="elem" value="#{Calendar.getEventsByDateTime(year, month, day, 23)}">
-        		<li>#{elem}</li>
-        	</ui:repeat> 
-        </ul>
+	    <script type="text/javascript">
+			$('#calendar-nav').addClass('active');
+	    </script>
+    	<div class="jumbotron">
+            <h3 class="meetup-page-title">Calendar</h3>
+            <p>Take a look at all of the events everyone has created so far. Once you've found one you're interested in, click join.</p>
+        </div>
+    	<h:form>
+	    	<div class="row">
+	            <div class="col-md-2">
+				    <h:selectOneMenu styleClass="select-block" value="#{Calendar.monthSelection}" style="display: none;">
+				        <f:selectItems value="#{Calendar.months}" />
+				    </h:selectOneMenu>
+	            </div>
+	            <div class="col-md-2">
+	            	<h:selectOneMenu styleClass="select-block" value="#{Calendar.daySelection}" style="display: none;">
+				        <f:selectItems value="#{Calendar.days}" />
+				    </h:selectOneMenu>
+	        	</div>
+	        </div>
+	    </h:form>
+    	<ui:param name="year" value="2013" />
+    	<ui:param name="month" value="#{Calendar.monthSelection}" />
+    	<ui:param name="day" value="#{Calendar.daySelection}" />
+    	<ui:repeat var="hour" value="#{Calendar.hours}">
+    		<div class="panel panel-primary">
+	            <div class="panel-heading">Time: #{hour}:00</div>
+	            <div class="panel-body">
+					<ul>
+						<ui:param name="hour" value="#{hour}" />
+			        	<ui:repeat var="eventItem" value="#{Calendar.getEventsByDateTime(year, month, day, hour)}">
+			        		<li>#{eventItem}</li>
+			        	</ui:repeat>
+			        </ul>
+				</div>
+	        </div>
+    	</ui:repeat>
+        <script type="text/javascript">
+	        $("select[class='select-block']").selectpicker({style: 'btn-primary', menuStyle: 'dropdown-inverse'});
+	        $("select").change(function() { $(this).closest('form').submit(); });
+	    </script>
     </ui:define>
 </ui:composition>
+</body>
 </html>
