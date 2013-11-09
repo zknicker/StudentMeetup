@@ -13,37 +13,43 @@
     	<h:form>
 	    	<div class="row">
 	            <div class="col-md-2">
-				    <h:selectOneMenu styleClass="select-block" value="#{Calendar.monthSelection}" style="display: none;">
+				    <h:selectOneMenu styleClass="select-block" value="#{Calendar.monthSelection}" style="">
 				        <f:selectItems value="#{Calendar.months}" />
+				        <f:ajax event="change" render="selectedMonth eventsList"/>
 				    </h:selectOneMenu>
 	            </div>
 	            <div class="col-md-2">
 	            	<h:selectOneMenu styleClass="select-block" value="#{Calendar.daySelection}" style="display: none;">
 				        <f:selectItems value="#{Calendar.days}" />
+				        <f:ajax event="change" render="selectedDay eventsList"/>
 				    </h:selectOneMenu>
 	        	</div>
 	        </div>
+		    <h:outputText id="selectedMonth" value="Month: #{Calendar.monthSelection}" /> 
+		    <h:outputText id="selectedDay" value=", Day: #{Calendar.daySelection}" /> 
+	    	<ui:param name="year" value="2013" />
+	    	<ui:param name="month" value="#{Calendar.monthSelection}" />
+	    	<ui:param name="day" value="#{Calendar.daySelection}" />
+	    	<h:panelGroup id="eventsList">
+	    	<ui:repeat var="hour" value="#{Calendar.hours}">
+	    		<div class="panel panel-primary">
+		            <div class="panel-heading">Time: #{hour}:00</div>
+		            <div class="panel-body">
+						<ul>
+							<ui:param name="hour" value="#{hour}" />
+				        	<ui:repeat var="eventItem" value="#{Calendar.getEventsByDateTime(year, month, day, hour)}">
+				        		<li>#{eventItem}</li>
+				        	</ui:repeat>
+				        </ul>
+					</div>
+		        </div>
+	    	</ui:repeat>
+	    	</h:panelGroup>
+	        <script type="text/javascript">
+		       $("select[class='select-block']").selectpicker({style: 'btn-primary', menuStyle: 'dropdown-inverse'});
+		        //$("select").change(function() { $(this).closest('form').submit(); });
+		    </script>
 	    </h:form>
-    	<ui:param name="year" value="2013" />
-    	<ui:param name="month" value="#{Calendar.monthSelection}" />
-    	<ui:param name="day" value="#{Calendar.daySelection}" />
-    	<ui:repeat var="hour" value="#{Calendar.hours}">
-    		<div class="panel panel-primary">
-	            <div class="panel-heading">Time: #{hour}:00</div>
-	            <div class="panel-body">
-					<ul>
-						<ui:param name="hour" value="#{hour}" />
-			        	<ui:repeat var="eventItem" value="#{Calendar.getEventsByDateTime(year, month, day, hour)}">
-			        		<li>#{eventItem}</li>
-			        	</ui:repeat>
-			        </ul>
-				</div>
-	        </div>
-    	</ui:repeat>
-        <script type="text/javascript">
-	        $("select[class='select-block']").selectpicker({style: 'btn-primary', menuStyle: 'dropdown-inverse'});
-	        $("select").change(function() { $(this).closest('form').submit(); });
-	    </script>
     </ui:define>
 </ui:composition>
 </body>
