@@ -12,7 +12,7 @@ import javax.ejb.Stateless;
 
 @Stateless
 public class CalendarService {
-    @PersistenceContext(unitName="create-event")
+    @PersistenceContext(unitName="event")
 	EntityManager em;
      
 

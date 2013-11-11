@@ -7,10 +7,13 @@ import entities.*;
 import javax.ejb.Stateless;
 
 @Stateless
-public class CreateEventService {
-    @PersistenceContext(unitName="create-event")
+public class EventService {
+    @PersistenceContext(unitName="event")
 	EntityManager em;
 
+    /**
+     * Creates an event.
+     */
 	public String createEvent(String name, String description, String year, String day, String month, String starthour, String startminute, String endhour, String endminute, String location, String category, String threshold) {
 		Event event = new Event();
 		
@@ -28,6 +31,9 @@ public class CreateEventService {
 		return "ID =" + beanID + "<br>Name: " + name + "<br>Description: " + description;
 	}
 	
+	/**
+	 * Returns a list of all of the events.
+	 */
 	public List<String> getAllEvents() {
 		List<String> results = new ArrayList<String>();
 		

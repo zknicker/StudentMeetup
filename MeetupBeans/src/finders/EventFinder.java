@@ -12,7 +12,7 @@ import javax.ejb.Stateless;
 
 @Stateless
 public class EventFinder {
-    @PersistenceContext(unitName="create-event")
+    @PersistenceContext(unitName="event")
 	EntityManager em;
      
 

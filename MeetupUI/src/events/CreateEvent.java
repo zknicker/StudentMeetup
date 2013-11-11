@@ -12,7 +12,7 @@ import services.*;
 public class CreateEvent
 {
 	@EJB 
-	private CreateEventService createEventService;
+	private EventService createEventService;
 	
 	/** Event name. */
     private String name;

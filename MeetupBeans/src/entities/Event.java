@@ -2,10 +2,11 @@ package entities;
 
 import java.io.*;
 import java.sql.Timestamp;
+
 import javax.persistence.*;
 
 /**
- * An event object as represented in the database.
+ * An object representing the Events table in the database.
  */
 @Entity
 @Table(name = "Events")
@@ -63,6 +64,7 @@ public class Event implements Serializable {
 		description = newDescription;
 	}
 
+	@SuppressWarnings("deprecation")
 	public void setStartime(String newYear, String newMonth, String newDay,
 			String newStartHour, String newStartMinute) {
 		int convertedYear = Integer.parseInt(newYear) - 1900;
@@ -76,6 +78,7 @@ public class Event implements Serializable {
 		return starttime;
 	}
 
+	@SuppressWarnings("deprecation")
 	public void setEndtime(String newYear, String newMonth, String newDay,
 			String newEndHour, String newEndMinute) {
 		int convertedYear = Integer.parseInt(newYear) - 1900;
