@@ -15,37 +15,38 @@
 	            <div class="col-md-2">
 				    <h:selectOneMenu styleClass="select-block" value="#{Calendar.monthSelection}" style="">
 				        <f:selectItems value="#{Calendar.months}" />
-				        <f:ajax event="change" render="selectedMonth eventsList"/>
+				        <f:ajax event="change" render="eventsList"/>
 				    </h:selectOneMenu>
 	            </div>
 	            <div class="col-md-2">
 	            	<h:selectOneMenu styleClass="select-block" value="#{Calendar.daySelection}" style="display: none;">
 				        <f:selectItems value="#{Calendar.days}" />
-				        <f:ajax event="change" render="selectedDay eventsList"/>
+				        <f:ajax event="change" render="eventsList"/>
 				    </h:selectOneMenu>
 	        	</div>
 	        </div>
-		    <h:outputText id="selectedMonth" value="Month: #{Calendar.monthSelection}" /> 
-		    <h:outputText id="selectedDay" value=", Day: #{Calendar.daySelection}" /> 
 	    	<ui:param name="year" value="2013" />
 	    	<ui:param name="month" value="#{Calendar.monthSelection}" />
 	    	<ui:param name="day" value="#{Calendar.daySelection}" />
 	    	<h:panelGroup id="eventsList">
-	    	<h4><span class="fui-calendar-solid"></span> Events on #{Calendar.daySelection}/#{Calendar.monthSelection}:</h4>
-	    	
-	    	<ui:repeat var="event" value="#{Calendar.getEventsByDateTime(year, month, day)}">
-	    		<div class="panel panel-primary">
-		            <div class="panel-heading">#{event.name}</div>
-		            <div class="panel-body">
-						Time: #{Calendar.getPrettyTime(event.starttime)} to #{Calendar.getPrettyTime(event.endtime)}<br/>
-						Description: #{event.description}
-					</div>
-		        </div>
-        	</ui:repeat>
+		    	<h4><span class="fui-calendar-solid"></span> Events on #{Calendar.monthSelection}/#{Calendar.daySelection}:</h4>
+		    	<h:panelGroup rendered="#{empty Calendar.getEventsByDateTime(year, month, day)}">
+				    <div class="event panel panel-primary panel-danger">
+			            <div class="panel-heading">No Events Found</div>
+			        </div>
+				</h:panelGroup>
+		    	<ui:repeat var="event" value="#{Calendar.getEventsByDateTime(year, month, day)}">
+		    		<div class="event panel panel-primary">
+			            <div class="panel-heading">#{event.name}</div>
+			            <div class="panel-body">
+							Time: #{Calendar.getPrettyTime(event.starttime)} to #{Calendar.getPrettyTime(event.endtime)}<br/>
+							Description: #{event.description}
+						</div>
+			        </div>
+	        	</ui:repeat>
 	    	</h:panelGroup>
 	        <script type="text/javascript">
 		       $("select[class='select-block']").selectpicker({style: 'btn-primary', menuStyle: 'dropdown-inverse'});
-		        //$("select").change(function() { $(this).closest('form').submit(); });
 		    </script>
 	    </h:form>
     </ui:define>
