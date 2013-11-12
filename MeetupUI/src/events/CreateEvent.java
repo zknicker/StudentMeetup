@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 
+import details.EventDetails;
 import services.*;
 
 /**
@@ -16,18 +17,25 @@ public class CreateEvent
 	
 	/** Event name. */
     private String name;
+    
 	/** Event description. */
     private String description;
+    
 	/** Event Date. */
-    private String year,day,month;
+    private String year, day, month;
+    
 	/** Start Time. */
-    private String starthour,startminute;
+    private String startHour, startMinute;
+    
 	/** End Time. */
-    private String endhour,endminute;
+    private String endHour, endMinute;
+    
 	/** Event Location. */
     private String location;
+    
 	/** Event Category. */
     private String category;
+    
 	/** Event Threshold. */
     private String threshold;
     	
@@ -71,36 +79,36 @@ public class CreateEvent
         this.month = month;
     }
     
-    public String getStarthour () {
-        return starthour;
+    public String getStartHour () {
+        return startHour;
     }
     
-    public void setStarthour (final String starthour) {
-        this.starthour = starthour;
+    public void setStartHour (final String starthour) {
+        this.startHour = starthour;
     }
     
-    public String getStartminute () {
-        return startminute;
+    public String getStartMinute () {
+        return startMinute;
     }
     
-    public void setStartminute (final String startminute) {
-        this.startminute = startminute;
+    public void setStartMinute (final String startminute) {
+        this.startMinute = startminute;
     }
 
-    public String getEndhour () {
-        return endhour;
+    public String getEndHour () {
+        return endHour;
     }
     
-    public void setEndhour (final String endhour) {
-        this.endhour = endhour;
+    public void setEndHour (final String endhour) {
+        this.endHour = endhour;
     }
     
-    public String getEndminute () {
-        return endminute;
+    public String getEndMinute () {
+        return endMinute;
     }
     
-    public void setEndminute (final String endminute) {
-        this.endminute = endminute;
+    public void setEndMinute (final String endminute) {
+        this.endMinute = endminute;
     }
     
     public String getLocation() {
@@ -132,9 +140,16 @@ public class CreateEvent
     }
     
 	public boolean create() {
-		System.out.println("Creating event with name " + name);
-		String eventInfo = createEventService.createEvent(name,description,year,day,month,starthour,startminute,endhour,endminute,
-				            location,category,threshold);
+		EventDetails event = new EventDetails();
+		event.setName(name);
+		event.setDescription(description);
+		event.setStarttime(year, month, day, startHour, startMinute);
+		event.setEndtime(year, month, day, endHour, endMinute);
+		event.setLocation(location);
+		event.setCategory(category);
+		event.setThreshold(threshold);
+		
+		createEventService.createEvent(event);
 		return true;
 	}
 	

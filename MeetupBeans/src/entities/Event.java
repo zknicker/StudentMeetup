@@ -26,10 +26,10 @@ public class Event implements Serializable {
 	private String description;
 
 	@Column(name = "STARTTIME")
-	private Timestamp starttime;
+	private Timestamp startTime;
 
 	@Column(name = "ENDTIME")
-	private Timestamp endtime;
+	private Timestamp endTime;
 
 	@Column(name = "LOCATION")
 	private String location;
@@ -63,33 +63,21 @@ public class Event implements Serializable {
 	public void setDescription(String newDescription) {
 		description = newDescription;
 	}
-
-	@SuppressWarnings("deprecation")
-	public void setStartime(String newYear, String newMonth, String newDay,
-			String newStartHour, String newStartMinute) {
-		int convertedYear = Integer.parseInt(newYear) - 1900;
-		int convertedMonth = Integer.parseInt(newMonth) - 1;
-		starttime = new Timestamp(convertedYear, convertedMonth,
-				Integer.parseInt(newDay), Integer.parseInt(newStartHour),
-				Integer.parseInt(newStartMinute), 0, 0);
+	
+	public void setStartime(Timestamp startTime) {
+		this.startTime = startTime;
 	}
 
 	public Timestamp getStarttime() {
-		return starttime;
+		return startTime;
 	}
 
-	@SuppressWarnings("deprecation")
-	public void setEndtime(String newYear, String newMonth, String newDay,
-			String newEndHour, String newEndMinute) {
-		int convertedYear = Integer.parseInt(newYear) - 1900;
-		int convertedMonth = Integer.parseInt(newMonth) - 1;
-		endtime = new Timestamp(convertedYear, convertedMonth,
-				Integer.parseInt(newDay), Integer.parseInt(newEndHour),
-				Integer.parseInt(newEndMinute), 0, 0);
+	public void setEndtime(Timestamp endTime) {
+		this.endTime = endTime;
 	}
 
 	public Timestamp getEndtime() {
-		return endtime;
+		return endTime;
 	}
 
 	public void setLocation(String newLocation) {

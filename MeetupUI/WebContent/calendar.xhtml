@@ -31,6 +31,7 @@
 	    	<ui:param name="month" value="#{Calendar.monthSelection}" />
 	    	<ui:param name="day" value="#{Calendar.daySelection}" />
 	    	<h:panelGroup id="eventsList">
+	    	<h4><span class="fui-calendar-solid"></span> Events on this day:</h4>
 	    	<ui:repeat var="hour" value="#{Calendar.hours}">
 	    		<div class="panel panel-primary">
 		            <div class="panel-heading">Time: #{hour}:00</div>

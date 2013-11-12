@@ -1,9 +1,14 @@
 package services;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.persistence.*;
+
+import details.EventDetails;
 import entities.*;
+
 import javax.ejb.Stateless;
 
 @Stateless
@@ -14,21 +19,18 @@ public class EventService {
     /**
      * Creates an event.
      */
-	public String createEvent(String name, String description, String year, String day, String month, String starthour, String startminute, String endhour, String endminute, String location, String category, String threshold) {
+	public void createEvent(EventDetails eventDetails) {
 		Event event = new Event();
-		
-		event.setName(name);
-		event.setDescription(description);
-		event.setStartime(year, month, day, starthour, startminute);
-		event.setEndtime(year, month, day, endhour, endminute);
-		event.setLocation(location);
-		event.setCategory(category);
-		event.setThreshold(threshold);
+				
+		event.setName(eventDetails.getName());
+		event.setDescription(eventDetails.getDescription());
+		event.setStartime(eventDetails.getStarttime());
+		event.setEndtime(eventDetails.getEndtime());
+		event.setLocation(eventDetails.getLocation());
+		event.setCategory(eventDetails.getCategory());
+		event.setThreshold(eventDetails.getThreshold());
 		
 		em.persist(event);
-		long beanID = event.getId();
-		
-		return "ID =" + beanID + "<br>Name: " + name + "<br>Description: " + description;
 	}
 	
 	/**
@@ -51,5 +53,4 @@ public class EventService {
 		
 		return results;
 	}
-
 }
