@@ -45,8 +45,8 @@ public class EventService {
 		} else {
 			for (Event event : events) {
 				results.add("ID: " + event.getId() + ", Name: " + event.getName() + ", Description: " + event.getDescription() + ", StartTime: "
-			                + event.getStarttime().toLocaleString() + ", EndTime: "+ event.getEndtime().toLocaleString()
-			                + ", Location: " +event.getLocation() + ", Category: " + event.getCategory() + ", Min. Attendees: " + event.getThreshold());
+			            + event.getStarttime() + ", EndTime: "+ event.getEndtime() + ", Location: " +event.getLocation() + ", Category: " 
+			            + event.getCategory() + ", Min. Attendees: " + event.getThreshold());
 						
 			}
 		}

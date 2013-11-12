@@ -26,10 +26,10 @@ public class Event implements Serializable {
 	private String description;
 
 	@Column(name = "STARTTIME")
-	private Timestamp startTime;
+	private Long startTime;
 
 	@Column(name = "ENDTIME")
-	private Timestamp endTime;
+	private Long endTime;
 
 	@Column(name = "LOCATION")
 	private String location;
@@ -64,19 +64,19 @@ public class Event implements Serializable {
 		description = newDescription;
 	}
 	
-	public void setStartime(Timestamp startTime) {
+	public void setStartime(Long startTime) {
 		this.startTime = startTime;
 	}
 
-	public Timestamp getStarttime() {
+	public Long getStarttime() {
 		return startTime;
 	}
 
-	public void setEndtime(Timestamp endTime) {
+	public void setEndtime(Long endTime) {
 		this.endTime = endTime;
 	}
 
-	public Timestamp getEndtime() {
+	public Long getEndtime() {
 		return endTime;
 	}
 
@@ -96,8 +96,8 @@ public class Event implements Serializable {
 		return category;
 	}
 
-	public void setThreshold(String newThreshold) {
-		threshold = Integer.parseInt(newThreshold);
+	public void setThreshold(int newThreshold) {
+		threshold = newThreshold;
 	}
 
 	public int getThreshold() {

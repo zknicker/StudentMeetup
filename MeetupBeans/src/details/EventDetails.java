@@ -1,6 +1,9 @@
 package details;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Details that describe a given event. This is a stand-alone, no strings attached
@@ -10,11 +13,11 @@ public class EventDetails {
 	private Long id;
 	private String name;
 	private String description;
-	private Timestamp startTime;	
-	private Timestamp endTime;
+	private Long startTime;	
+	private Long endTime;
 	private String location;
 	private String category;
-	private String threshold;
+	private int threshold;
 
 	public Long getId() {
 		return id;
@@ -40,7 +43,7 @@ public class EventDetails {
 		this.description = description;
 	}
 
-	public void setStartime(Timestamp time) {
+	public void setStartime(Long time) {
 		this.startTime = time;
 	}
 
@@ -48,11 +51,11 @@ public class EventDetails {
 		this.startTime = getTimestamp(year, month, day, hour, minute);
 	}
 	
-	public Timestamp getStarttime() {
+	public Long getStarttime() {
 		return startTime;
 	}
 
-	public void setEndtime(Timestamp time) {
+	public void setEndtime(Long time) {
 		this.endTime = time;
 	}
 
@@ -60,7 +63,7 @@ public class EventDetails {
 		this.endTime = getTimestamp(year, month, day, hour, minute);
 	}
 
-	public Timestamp getEndtime() {
+	public Long getEndtime() {
 		return endTime;
 	}
 
@@ -80,23 +83,28 @@ public class EventDetails {
 		return category;
 	}
 
-	public void setThreshold(String threshold) {
+	public void setThreshold(int threshold) {
 		this.threshold = threshold;
 	}
 
-	public String getThreshold() {
+	public int getThreshold() {
 		return threshold;
 	}
 	
 	/**
 	 * Returns a timestamp for the given time information.
 	 */
-	private Timestamp getTimestamp(String year, String month, String day, String hour, String minute) {
-		int convertedYear = Integer.parseInt(year) - 1900;
-		int convertedMonth = Integer.parseInt(month) - 1;
+	private Long getTimestamp(String year, String month, String day, String hour, String minute) {
 		
-		return new Timestamp(convertedYear, convertedMonth,
-				Integer.parseInt(day), Integer.parseInt(hour),
-				Integer.parseInt(minute), 0, 0);
+		SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd-HH-mm");
+		Date date;
+		try {
+			date = sdf.parse(year + "-" + month + "-" + day + "-" + hour + "-" + minute);
+		} catch (ParseException e) {
+			return 0L;
+		}
+		long millisSinceEpoch = date.getTime();
+		long secondsSinceEpoch = millisSinceEpoch / 1000;
+		return secondsSinceEpoch;
 	}
 }

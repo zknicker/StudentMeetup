@@ -69,7 +69,7 @@ public class EventFinder {
 			day = ("0" + day);
 
 		String wildcard = "%:%'";
-		String QueryString = "select e from Event e where STARTTIME LIKE '" + year + "-" + month + "-" + day + " " + hour + ":" +wildcard;
+		String QueryString = "from Event e";
 		System.out.println(QueryString);
 		Query query = em.createQuery(QueryString);
 		
@@ -80,7 +80,7 @@ public class EventFinder {
 		} else {
 			for (Event event : events) {
 				results.add("Name: " + event.getName() + ", StartTime: "
-			                + event.getStarttime().toLocaleString() + ", EndTime: "+ event.getEndtime().toLocaleString()
+			                + event.getStarttime() + ", EndTime: "+ event.getEndtime()
 			                + ", Location: " +event.getLocation());			
 			}
 		}

@@ -147,7 +147,7 @@ public class CreateEvent
 		event.setEndtime(year, month, day, endHour, endMinute);
 		event.setLocation(location);
 		event.setCategory(category);
-		event.setThreshold(threshold);
+		event.setThreshold(Integer.parseInt(threshold));
 		
 		createEventService.createEvent(event);
 		return true;

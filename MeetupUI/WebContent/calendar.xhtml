@@ -31,20 +31,17 @@
 	    	<ui:param name="month" value="#{Calendar.monthSelection}" />
 	    	<ui:param name="day" value="#{Calendar.daySelection}" />
 	    	<h:panelGroup id="eventsList">
-	    	<h4><span class="fui-calendar-solid"></span> Events on this day:</h4>
-	    	<ui:repeat var="hour" value="#{Calendar.hours}">
+	    	<h4><span class="fui-calendar-solid"></span> Events on #{Calendar.daySelection}/#{Calendar.monthSelection}:</h4>
+	    	
+	    	<ui:repeat var="event" value="#{Calendar.getEventsByDateTime(year, month, day)}">
 	    		<div class="panel panel-primary">
-		            <div class="panel-heading">Time: #{hour}:00</div>
+		            <div class="panel-heading">#{event.name}</div>
 		            <div class="panel-body">
-						<ul>
-							<ui:param name="hour" value="#{hour}" />
-				        	<ui:repeat var="eventItem" value="#{Calendar.getEventsByDateTime(year, month, day, hour)}">
-				        		<li>#{eventItem}</li>
-				        	</ui:repeat>
-				        </ul>
+						Time: #{Calendar.getPrettyTime(event.starttime)} to #{Calendar.getPrettyTime(event.endtime)}<br/>
+						Description: #{event.description}
 					</div>
 		        </div>
-	    	</ui:repeat>
+        	</ui:repeat>
 	    	</h:panelGroup>
 	        <script type="text/javascript">
 		       $("select[class='select-block']").selectpicker({style: 'btn-primary', menuStyle: 'dropdown-inverse'});
