@@ -82,7 +82,7 @@ public class Calendar
 		    java.util.Calendar calendar = java.util.Calendar.getInstance();
 		    calendar.setTime(new Date());
 		    int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
-		    return Integer.toString(day + 1);
+		    return Integer.toString(day);
 		}
 		return daySelection;
 	}

@@ -10,6 +10,7 @@ import javax.persistence.*;
 
 import details.EventDetails;
 import entities.*;
+import finders.EventFinder;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -20,10 +21,10 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class CalendarService {
-    @PersistenceContext(unitName="event")
-	EntityManager em;
-     
-    private final Long secondsInDay = 86400L;
+	
+	/** An event finder to retrieve events from the DB. */
+    @EJB
+	EventFinder eventFinder;
     
     /**
      * Gets events by time.
@@ -35,23 +36,11 @@ public class CalendarService {
      * @throws ParseException on error parsing the inputted time information.
      */
     public List<EventDetails> getEvents(String year, String month, String day) throws ParseException {
-		List<EventDetails> events = new ArrayList<EventDetails>();
+		List<EventDetails> result = new ArrayList<EventDetails>();
 		
-		if(month.length() < 2)
-			 month = ("0" + month);
-		if(day.length() < 2)
-			day = ("0" + day);
+		List<Event> events = eventFinder.getEvents(year, month, day);
 
-		SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = sdf.parse(year + "-" + month + "-" + day);
-		long searchTimeLowerBound = date.getTime() / 1000;
-		long searchTimeUpperBound = searchTimeLowerBound + secondsInDay;
-		
-		String queryString = "select e from Event e where STARTTIME >= " + searchTimeLowerBound + " AND STARTTIME < " + searchTimeUpperBound + " ORDER BY STARTTIME";
-		Query query = em.createQuery(queryString);
-		List<Event> queryResult = query.getResultList();	
-
-		for (Event event : queryResult) {
+		for (Event event : events) {
 			EventDetails eventDetails = new EventDetails();
 			eventDetails.setName(event.getName());
 			eventDetails.setDescription(event.getDescription());
@@ -61,9 +50,9 @@ public class CalendarService {
 			eventDetails.setCategory(event.getCategory());
 			eventDetails.setThreshold(event.getThreshold());
 			
-			events.add(eventDetails);			
+			result.add(eventDetails);			
 		}
 		
-		return events;
+		return result;
     }
 }

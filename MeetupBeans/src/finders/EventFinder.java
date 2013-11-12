@@ -25,18 +25,18 @@ public class EventFinder {
     @PersistenceContext(unitName="event")
 	EntityManager em;
     
+   private final Long secondsInDay = 86400L;
+    
     /**
      * Gets events by time.
      * 
      * @param year - the year corresponding to the desired event.
      * @param month - the month corresponding to the desired event.
      * @param day - the day corresponding to the desired event.
-     * @return a list of {@link EventDetails} matching the parameter criteria.
+     * @return a list of {@link Event} matching the parameter criteria.
      * @throws ParseException on error parsing the inputted time information.
      */
-    public List<EventDetails> getEvents(String year, String month, String day) throws ParseException {
-		List<EventDetails> events = new ArrayList<EventDetails>();
-		
+    public List<Event> getEvents(String year, String month, String day) throws ParseException {
 		if(month.length() < 2)
 			 month = ("0" + month);
 		if(day.length() < 2)
@@ -44,49 +44,15 @@ public class EventFinder {
 
 		SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = sdf.parse(year + "-" + month + "-" + day);
-		long millisSinceEpoch = date.getTime();
-		long secondsSinceEpoch = millisSinceEpoch / (60 * 1000);
+		long searchTimeLowerBound = date.getTime() / 1000;
+		long searchTimeUpperBound = searchTimeLowerBound + secondsInDay;
 		
-		String wildcard = "%:%'";
-		String QueryString = "select e from Event e where STARTTIME LIKE '" + year + "-" + month + "-" + day + " " + "05" + ":" +wildcard;
-		System.out.println(QueryString);
-		Query query = em.createQuery(QueryString);
+		String queryString = "select e from Event e where STARTTIME >= " + searchTimeLowerBound + " AND STARTTIME < " + searchTimeUpperBound + " ORDER BY STARTTIME";
+		Query query = em.createQuery(queryString);
 		
-		List<Event> queryResult = query.getResultList();		
+		@SuppressWarnings("unchecked")
+		List<Event> events = query.getResultList();	
 
 		return events;
     }
-
-	public List<String> getEventsByDateTime(String year, String month, String day, String hour) {
-
-		List<String> results = new ArrayList<String>();
-		
-		if(month.length() < 2)
-			 month = ("0" + month);
-		if(hour.length() < 2)
-			hour = ("0" + hour);
-		if(day.length() < 2)
-			day = ("0" + day);
-
-		String wildcard = "%:%'";
-		String QueryString = "from Event e";
-		System.out.println(QueryString);
-		Query query = em.createQuery(QueryString);
-		
-		List<Event> events = query.getResultList();		
-
-		if (events.isEmpty()) {
-			results.add("No events found.");
-		} else {
-			for (Event event : events) {
-				results.add("Name: " + event.getName() + ", StartTime: "
-			                + event.getStarttime() + ", EndTime: "+ event.getEndtime()
-			                + ", Location: " +event.getLocation());			
-			}
-		}
-
-		return results;
-	}
-	
-	
 }
