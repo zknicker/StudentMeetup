@@ -30,12 +30,12 @@
 	    	<ui:param name="day" value="#{Calendar.daySelection}" />
 	    	<h:panelGroup id="eventsList">
 		    	<h4><span class="fui-calendar-solid"></span> Events on #{Calendar.monthSelection}/#{Calendar.daySelection}:</h4>
-		    	<h:panelGroup rendered="#{empty Calendar.getEventsByDateTime(year, month, day)}">
+		    	<h:panelGroup rendered="#{empty Calendar.getEvents(year, month, day)}">
 				    <div class="event panel panel-primary panel-danger">
 			            <div class="panel-heading">No Events Found</div>
 			        </div>
 				</h:panelGroup>
-		    	<ui:repeat var="event" value="#{Calendar.getEventsByDateTime(year, month, day)}">
+		    	<ui:repeat var="event" value="#{Calendar.getEvents(year, month, day)}">
 		    		<div class="event panel panel-primary">
 			            <div class="panel-heading">#{event.name}</div>
 			            <div class="panel-body">

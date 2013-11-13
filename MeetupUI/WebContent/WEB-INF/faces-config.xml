@@ -7,17 +7,21 @@
   <managed-bean-class>events.CreateEvent</managed-bean-class>
   <managed-bean-scope>application</managed-bean-scope>
  </managed-bean>
-  <managed-bean>
+ <managed-bean>
   <managed-bean-name>Calendar</managed-bean-name>
   <managed-bean-class>calendar.Calendar</managed-bean-class>
   <managed-bean-scope>application</managed-bean-scope>
  </managed-bean>
  <navigation-rule>
- 	<display-name>create-event.xhtml</display-name>
- 	<from-view-id>/create-event.xhtml</from-view-id>
- 	<navigation-case>
- 		<from-outcome>true</from-outcome>
- 		<to-view-id>/welcome.xhtml</to-view-id>
- 	</navigation-case>
+  <display-name>create-event.xhtml</display-name>
+  <from-view-id>/create-event.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>true</from-outcome>
+   <to-view-id>/create-event-success.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>false</from-outcome>
+   <to-view-id>/create-event-failure.xhtml</to-view-id>
+  </navigation-case>
  </navigation-rule>
 </faces-config>

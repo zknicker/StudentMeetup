@@ -91,7 +91,7 @@ public class Calendar
 	 * Get's a list of events for a given year, month, and day. 
 	 * @throws ParseException if the year, month, or day is invalid.
 	 */
-	public List<EventDetails> getEventsByDateTime(String year, String month, String day) throws ParseException {
+	public List<EventDetails> getEvents(String year, String month, String day) throws ParseException {
 		return calendarService.getEvents(year, month, day);
 	}
 	
@@ -99,7 +99,6 @@ public class Calendar
 	 * Returns a pretty representation of a unix timestamp. Useful when
 	 * display event information using an {@link EventDetails} object.
 	 */
-	@SuppressWarnings("deprecation")
 	public String getPrettyTime(Long timestamp) {
 		java.util.Calendar calendar = java.util.Calendar.getInstance();
 		Date date = new Date(timestamp * 1000);

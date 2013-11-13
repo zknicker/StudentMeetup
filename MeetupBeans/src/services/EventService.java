@@ -11,6 +11,10 @@ import entities.*;
 
 import javax.ejb.Stateless;
 
+/**
+ * Stateless session bean that provides functionality to applications wishing
+ * to manipulate events.
+ */
 @Stateless
 public class EventService {
     @PersistenceContext(unitName="event")
@@ -28,13 +32,16 @@ public class EventService {
 		event.setEndtime(eventDetails.getEndtime());
 		event.setLocation(eventDetails.getLocation());
 		event.setCategory(eventDetails.getCategory());
+		event.setStatus(0); // default status for events
 		event.setThreshold(eventDetails.getThreshold());
 		
 		em.persist(event);
 	}
 	
 	/**
-	 * Returns a list of all of the events.
+	 * Returns a list of all of the events in the system. This isn't a very
+	 * useful method. It's just used on a temporary page a user is redirected
+	 * to after creating an event to quickly see all of the events in the system.
 	 */
 	public List<String> getAllEvents() {
 		List<String> results = new ArrayList<String>();

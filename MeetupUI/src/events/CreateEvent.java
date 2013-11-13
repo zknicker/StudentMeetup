@@ -140,6 +140,16 @@ public class CreateEvent
     }
     
 	public boolean create() {
+		
+		if (!isValidString(name) || !isValidString(description) || 
+				!isValidString(location) || !isValidString(category) ||
+				!isValidNum(year, 4) || !isValidNum(month, 2) || !isValidNum(day, 2) ||
+				!isValidNum(startHour, 2) || !isValidNum(endHour, 2) || !isValidNum(startMinute, 2) ||
+				!isValidNum(endMinute, 2) || !isValidNum(threshold)) {
+			
+			return false;
+		}
+		
 		EventDetails event = new EventDetails();
 		event.setName(name);
 		event.setDescription(description);
@@ -155,5 +165,36 @@ public class CreateEvent
 	
 	public List<String> getAllEvents() {
 		return createEventService.getAllEvents();
+	}
+	
+	/**
+	 * Validates incoming name, description, and other strings.
+	 * 
+	 * @return true if valid, false otherwise.
+	 */
+	private boolean isValidString(String string) {
+		return string.matches("[0-9a-zA-Z -'_]+");
+	}
+	
+	/**
+	 * Validates numbers to ensure their length and positive value.
+	 * Note that this validation is a bit dumb, it could be a lot better.
+	 * But, it works for the scope of this assignment (hopefully :)).
+	 * 
+	 * @return true if valid, false otherwise.
+	 */
+	private boolean isValidNum(String num, int length) {
+		return num.matches("[0-9]{" + length + "}");
+	}
+	
+	/**
+	 * Validates numbers to ensure their positive value. In this overloaded
+	 * version of isValidNum, length does not matter. Though, of course, it
+	 * must be at least one character (otherwise it would be null - bad!)
+	 * 
+	 * @return true if valid, false otherwise.
+	 */
+	private boolean isValidNum(String num) {
+		return num.matches("[0-9]+");
 	}
 }

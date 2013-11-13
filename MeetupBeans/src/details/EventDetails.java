@@ -18,6 +18,7 @@ public class EventDetails {
 	private String location;
 	private String category;
 	private int threshold;
+	private int status;
 
 	public Long getId() {
 		return id;
@@ -83,12 +84,20 @@ public class EventDetails {
 		return category;
 	}
 
-	public void setThreshold(int threshold) {
+	public void setThreshold(Integer threshold) {
 		this.threshold = threshold;
 	}
 
 	public int getThreshold() {
 		return threshold;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public int getStatus() {
+		return status;
 	}
 	
 	/**

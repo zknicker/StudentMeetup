@@ -2,6 +2,7 @@ package entities;
 
 import java.io.*;
 import java.sql.Timestamp;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -49,7 +50,7 @@ public class Event implements Serializable {
 	 * required for this event to actually take place.
 	 */
 	@Column(name = "THRESHOLD")
-	private int threshold;
+	private Integer threshold;
 
 	/** 
 	 * The status of the event. Different numbers represent different
@@ -57,8 +58,8 @@ public class Event implements Serializable {
 	 * canceled, etc.)
 	 */
 	@Column(name = "STATUS")
-	private int status;
-
+	private Integer status;
+	
 	/**
 	 * Gets the ID of the event.
 	 */
@@ -161,7 +162,7 @@ public class Event implements Serializable {
 	/**
 	 * Sets the threshold of the event.
 	 */
-	public void setThreshold(int newThreshold) {
+	public void setThreshold(Integer newThreshold) {
 		threshold = newThreshold;
 	}
 
@@ -175,14 +176,14 @@ public class Event implements Serializable {
 	/**
 	 * Sets the status of the event.
 	 */
-	public void setStatus(int newStatus) {
+	public void setStatus(Integer newStatus) {
 		status = newStatus;
 	}
 
 	/**
 	 * Gets the status of the event.
 	 */
-	public int getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 }

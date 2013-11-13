@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+    <ui:define name="content">
+	    <div class="event panel panel-primary">
+            <div class="panel-heading">Event Creation Successful!</div>
+            <div class="panel-body">
+            	Congratulations! Your event was created successfully.<br /><br />
+            	<div class="row demo-row">
+	            	<div class="col-md-3">
+	            		<a href="calendar.xhtml" class="btn btn-block btn-lg btn-primary">View The Calendar</a>
+	            	</div>
+	            	<div class="col-md-3">
+	            		<a href="create-event.xhtml" class="btn btn-block btn-lg btn-info">Create Another Event</a>
+	            	</div>
+            	</div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

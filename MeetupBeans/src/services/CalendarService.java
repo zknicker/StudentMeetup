@@ -48,6 +48,7 @@ public class CalendarService {
 			eventDetails.setEndtime(event.getEndtime());
 			eventDetails.setLocation(eventDetails.getLocation());
 			eventDetails.setCategory(event.getCategory());
+			eventDetails.setStatus(event.getStatus());
 			eventDetails.setThreshold(event.getThreshold());
 			
 			result.add(eventDetails);			
