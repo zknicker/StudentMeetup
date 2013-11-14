@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<body>
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+    <ui:define name="content">
+	    <script type="text/javascript">
+			$('#calendar-nav').addClass('active');
+	    </script>
+    	<div class="jumbotron">
+            <h3 class="meetup-page-title">Calendar</h3>
+            <p>Take a look at all of the events everyone has created so far. Once you've found one you're interested in, click join.</p>
+        </div>
+    	<h:form>
+	    	<div class="row">
+	            <div class="col-md-2">
+				    <h:selectOneMenu styleClass="select-block" value="#{Calendar.monthSelection}" style="">
+				        <f:selectItems value="#{Calendar.months}" />
+				        <f:ajax event="change" render="eventsList"/>
+				    </h:selectOneMenu>
+	            </div>
+	            <div class="col-md-2">
+	            	<h:selectOneMenu styleClass="select-block" value="#{Calendar.daySelection}" style="display: none;">
+				        <f:selectItems value="#{Calendar.days}" />
+				        <f:ajax event="change" render="eventsList"/>
+				    </h:selectOneMenu>
+	        	</div>
+	        </div>
+	    	<ui:param name="year" value="2013" />
+	    	<ui:param name="month" value="#{Calendar.monthSelection}" />
+	    	<ui:param name="day" value="#{Calendar.daySelection}" />
+	    	<h:panelGroup id="eventsList">
+		    	<h4><span class="fui-calendar-solid"></span> Events on #{Calendar.monthSelection}/#{Calendar.daySelection}:</h4>
+		    	<h:panelGroup rendered="#{empty Calendar.getEvents(year, month, day)}">
+				    <div class="event panel panel-primary panel-danger">
+			            <div class="panel-heading">No Events Found</div>
+			        </div>
+				</h:panelGroup>
+		    	<ui:repeat var="event" value="#{Calendar.getEvents(year, month, day)}">
+		    		<div class="event panel panel-primary">
+			            <div class="panel-heading">#{event.name}</div>
+			            <div class="panel-body">
+							Time: #{Calendar.getPrettyTime(event.starttime)} to #{Calendar.getPrettyTime(event.endtime)}<br/>
+							Description: #{event.description}
+						</div>
+			        </div>
+	        	</ui:repeat>
+	    	</h:panelGroup>
+	        <script type="text/javascript">
+		       $("select[class='select-block']").selectpicker({style: 'btn-primary', menuStyle: 'dropdown-inverse'});
+		    </script>
+	    </h:form>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

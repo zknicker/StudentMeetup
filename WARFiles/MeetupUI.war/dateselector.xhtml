@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+<body>
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+    <ui:define name="content">
+        <h:form>
+        	<h:outputLabel value="Enter a date to see what's happening!"></h:outputLabel>
+            <h:panelGrid columns="4">
+                <h:outputText value="Event Date (mm/dd/yyyy):"></h:outputText>      
+                <h:inputText value="#{createEvent.monthToView}" size="1"></h:inputText>
+                <h:inputText value="#{createEvent.dayToView}" size="1"></h:inputText>
+                <h:inputText value="#{createEvent.yearToView}" size="3"></h:inputText>                                
+            </h:panelGrid>
+            <h:panelGrid columns="1">
+            <h:commandButton value="Return Results" action="calendar"></h:commandButton>
+            </h:panelGrid>
+        </h:form>
+    </ui:define>
+</ui:composition>
+</body>
+</html>

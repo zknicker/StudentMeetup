@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<body>
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+    <ui:define name="content">
+    <script type="text/javascript">
+		$('#create-event-nav').addClass('active');
+    </script>
+	<div class="jumbotron">
+        <h3 class="meetup-page-title">Create Event</h3>
+        <p>Creating an event is as simple as filling out this short form below. Once you're done, click the "create" button, and your event will show up on the calendar for everybody to see.</p>
+    </div>
+    <h:form>
+    	<div class="row">
+            <div class="col-md-12">
+                <div class="well">
+                    <legend>Part 1: Basic Event Information</legend>
+		            <h:inputText id="name-input" styleClass="form-control" value="#{createEvent.name}"></h:inputText>
+		            <script type="text/javascript">$('[id$="name-input"]').attr('placeholder', 'Name');</script>
+		            <h:inputText id="desc-input" styleClass="form-control" value="#{createEvent.description}"></h:inputText>
+                	<script type="text/javascript">$('[id$="desc-input"]').attr('placeholder', 'Description');</script>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="well">
+                    <legend>Part 2: Event Time</legend>
+                    <small>Date</small>
+                    <div class="row">
+                        <div class="col-xs-4">
+                        	<h:inputText id="month-input" styleClass="form-control" value="#{createEvent.month}" size="1"></h:inputText>
+		            		<script type="text/javascript">$('[id$="month-input"]').attr('placeholder', 'Month (MM)');</script>
+                        </div>
+                        <div class="col-xs-4">
+           					<h:inputText id="day-input" styleClass="form-control" value="#{createEvent.day}" size="1"></h:inputText>
+		            		<script type="text/javascript">$('[id$="day-input"]').attr('placeholder', 'Day (DD)');</script>
+                        </div>
+                        <div class="col-xs-4">
+            				<h:inputText id="year-input" styleClass="form-control" value="#{createEvent.year}" size="3"></h:inputText>
+		            		<script type="text/javascript">$('[id$="year-input"]').attr('placeholder', 'Year (YYYY)');</script>
+                        </div>
+                    </div>
+                    <small>Start Time</small>
+                    <div class="row">
+                        <div class="col-xs-4">
+            				<h:inputText id="start-hour-input" styleClass="form-control" value="#{createEvent.startHour}" size="1"></h:inputText>
+		            		<script type="text/javascript">$('[id$="start-hour-input"]').attr('placeholder', 'Hour (HH)');</script>
+                        </div>
+                        <div class="col-xs-4">
+                            <h:inputText id="start-minute-input" styleClass="form-control" value="#{createEvent.startMinute}" size="1"></h:inputText>
+		            		<script type="text/javascript">$('[id$="start-minute-input"]').attr('placeholder', 'Minute (MM)');</script>
+                        </div>
+                    </div>
+                    <small>End Time</small>
+                    <div class="row">
+                        <div class="col-xs-4">
+            				<h:inputText id="end-hour-input" styleClass="form-control" value="#{createEvent.endHour}" size="1"></h:inputText>
+		            		<script type="text/javascript">$('[id$="end-hour-input"]').attr('placeholder', 'Hour (HH)');</script>
+                        </div>
+                        <div class="col-xs-4">
+            				<h:inputText id="end-minute-input" styleClass="form-control" value="#{createEvent.endMinute}" size="1"></h:inputText>
+		            		<script type="text/javascript">$('[id$="end-minute-input"]').attr('placeholder', 'Minute (MM)');</script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="well">
+                    <legend>Part 3: Extra Options</legend>
+		            <h:inputText id="location-input" styleClass="form-control" value="#{createEvent.location}"></h:inputText>
+		            <h:inputText id="category-input" styleClass="form-control" value="#{createEvent.category}"></h:inputText>
+		            <h:inputText id="threshold-input" styleClass="form-control" value="#{createEvent.threshold}" size="1"></h:inputText>
+		       		<script type="text/javascript">
+		       			$('[id$="location-input"]').attr('placeholder', 'Location');
+		       			$('[id$="category-input"]').attr('placeholder', 'Category');
+		       			$('[id$="threshold-input"]').attr('placeholder', 'Minimum Sign Ups Required');
+		       		</script>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <h:commandButton styleClass="btn btn-lg btn-primary btn-block" value="Create Event" action="#{createEvent.create()}"></h:commandButton>
+        		<!-- <h:commandButton value="View Calendar" action="dateselector"></h:commandButton> -->
+            </div>
+        </div>
+    </h:form>
+    </ui:define>
+</ui:composition>
+</body>
+</html>
