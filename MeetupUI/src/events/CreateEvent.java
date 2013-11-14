@@ -173,7 +173,7 @@ public class CreateEvent
 	 * @return true if valid, false otherwise.
 	 */
 	private boolean isValidString(String string) {
-		return string.matches("[0-9a-zA-Z -'_]+");
+		return string.matches("[a-zA-Z0-9.,;:!?' ]+");
 	}
 	
 	/**
