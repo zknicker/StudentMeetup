@@ -33,7 +33,7 @@ public class CalendarService {
      * @param month - the month corresponding to the desired event.
      * @param day - the day corresponding to the desired event.
      * @return a list of {@link EventDetails} matching the parameter criteria.
-     * @throws ParseException on error parsing the inputted time information.
+     * @throws ParseException on error parsing the inputed time information.
      */
     public List<EventDetails> getEvents(String year, String month, String day) throws ParseException {
 		List<EventDetails> result = new ArrayList<EventDetails>();

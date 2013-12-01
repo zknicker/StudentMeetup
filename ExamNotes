@@ -1,0 +1,22 @@
+The point of the class was to give you a rather complicated introduction to a couple of enterprise technologies.
+
+Dependency Injection
+Transactions
+Desiging Applications when the framework gives you a lot of constraints
+	- object oriented design in Java 
+	- VS design in a framework
+XML - becomes a core technology for everything
+
+Exam on website is an old exam. Our exam is shorter, or will say "Given 6 questions, choose 4".
+
+Question 1:
+Transactions are very important. A problem like Question 1 in the review will be included.
+
+Question 2:
+No android. The idea is that you are building an enterprise application (a simple one). You just need to identify what
+exists at each layer based upon knowledge of the technology stack we employed this semester. Options exist at each
+layer as well (e.g. websockets vs JSF). Will be asked to sort of sketch out the design (i.e. draw out an HTML page,
+identify methods for a given class, etc.) of the application stack from client-side to server-side.
+
+Question 3:
+Given diagram of an ORM, identify its tables and keys.

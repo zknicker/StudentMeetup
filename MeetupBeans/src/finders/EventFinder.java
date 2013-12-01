@@ -34,7 +34,7 @@ public class EventFinder {
      * @param month - the month corresponding to the desired event.
      * @param day - the day corresponding to the desired event.
      * @return a list of {@link Event} matching the parameter criteria.
-     * @throws ParseException on error parsing the inputted time information.
+     * @throws ParseException on error parsing the inputed time information.
      */
     public List<Event> getEvents(String year, String month, String day) throws ParseException {
 		if(month.length() < 2)
