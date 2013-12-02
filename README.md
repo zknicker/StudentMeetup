@@ -20,3 +20,7 @@ You can open a port using:
 ```
 sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 ```
+### Part 5 DB Table Setup
+```
+CREATE TABLE DOGS ( ID BIGINT(19), NAME VARCHAR(255), STARTTIME BIGINT(19), ENDTIME BIGINT(19), DESCRIPTION VARCHAR(255) );
+```
