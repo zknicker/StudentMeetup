@@ -22,14 +22,14 @@
     <route>
       <from uri="timer://customerDataTrigger?delay=2000&amp;period=2000"/>
       <setBody>
-	<constant>SELECT ID, NAME, STARTTIME, ENDTIME, DESCRIPTION FROM EVENTS;</constant>
+	<constant>SELECT ID, NAME, STARTTIME, ENDTIME, DESCRIPTION FROM EVENTS where STARTTIME BETWEEN 1386046800 AND 1386133199</constant>
       </setBody>
       <to uri="jdbc:dataSource"/>
       <split>
 	<simple>${body}</simple>
 	<log message="Data extracted ${body}"/>
 	<setBody>
-	  <simple>INSERT INTO EVENTS (ID, NAME, STARTTIME, ENDTIME, DESCRIPTION) VALUES ( ${body[ID]}, '${body[NAME]}', ${body[STARTTIME]}, ${body[ENDTIME]}, '${body[DESCRIPTION]}' ) </simple>
+	  <simple>MERGE INTO EVENTS (ID, NAME, STARTTIME, ENDTIME, DESCRIPTION) VALUES ( ${body[ID]}, '${body[NAME]}', ${body[STARTTIME]}, ${body[ENDTIME]}, '${body[DESCRIPTION]}' )</simple>
 	</setBody>
 	<to uri="jdbc:dataDestination"/>
       </split>
