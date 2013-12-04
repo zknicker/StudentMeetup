@@ -1,3 +1,5 @@
+Day 1 Review
+------------
 The point of the class was to give you a rather complicated introduction to a couple of enterprise technologies.
 
 Dependency Injection
@@ -20,3 +22,25 @@ identify methods for a given class, etc.) of the application stack from client-s
 
 Question 3:
 Given diagram of an ORM, identify its tables and keys.
+
+
+Day 2 Review
+------------
+Theoretical Questions
+E.G. Given XML, what does this means
+E.G. What are the different isolation levels and what do they mean.
+
+Something Pertaining To Project
+E.G. Simple ESB Application (what's on front end, backing beans, ajax, etc.) (just sketch out, no code)
+
+
+Questions
+---------
+1) ESB organization?
+Entity beans: database model, associations
+Service beans: how do you partition logic across these session beans? Up to you. Won't be judged.
+
+2) There will be a design question. Design classes for a situation.
+
+3) No design component to the technology questions.
+
