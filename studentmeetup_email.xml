@@ -10,33 +10,40 @@
   <bean id="dataSource" class="org.h2.jdbcx.JdbcDataSource">
     <property name="URL" value="jdbc:h2:tcp://localhost/~/studentmeetup"/>
     <property name="user" value="sa"/>
-    <property name="password" value="sa"/>
+    <property name="password" value=""/>
   </bean>
   
   <bean id="dataDestination" class="org.h2.jdbcx.JdbcDataSource">
     <property name="URL" value="jdbc:h2:tcp://localhost/~/studentmeetup_email"/>
     <property name="user" value="sa"/>
-    <property name="password" value="sa"/>
+    <property name="password" value=""/>
   </bean>
   
   <camelContext xmlns="http://camel.apache.org/schema/blueprint">
     <route>
-      <from uri="timer://customerDataTrigger?delay=2000&amp;period=2000"/>
-	  <setBody>
-	<constant>TRUNCATE TABLE EVENTS</constant>
+      <from uri="timer://customerDataTrigger?delay=30000&amp;period=30000"/>
+      <setBody>
+        <constant>TRUNCATE TABLE EVENTS</constant>
       </setBody>
       <to uri="jdbc:dataDestination"/>
+      <log message="Truncated events table in destination db."/>
       <setBody>
-	<constant>SELECT ID, NAME, STARTTIME, ENDTIME, DESCRIPTION FROM EVENTS e where e.STARTTIME BETWEEN (datediff(second, '1970-01-01', now()) + 18000) AND (datediff(second, '1970-01-01', now()) + 104400)</constant>
+        <constant>
+          SELECT ID, NAME, STARTTIME, ENDTIME, DESCRIPTION FROM EVENTS e 
+            where e.STARTTIME BETWEEN (datediff(second, '1970-01-01', now()) + 18000) AND (datediff(second, '1970-01-01', now()) + 86400 + 18000)
+        </constant>
       </setBody>
       <to uri="jdbc:dataSource"/>
       <split>
-	<simple>${body}</simple>
-	<log message="Data extracted ${body}"/>
-	<setBody>
-	  <simple>INSERT INTO EVENTS (ID, NAME, STARTTIME, ENDTIME, DESCRIPTION) VALUES ( ${body[ID]}, '${body[NAME]}', ${body[STARTTIME]}, ${body[ENDTIME]}, '${body[DESCRIPTION]}' )</simple>
-	</setBody>
-	<to uri="jdbc:dataDestination"/>
+        <simple>${body}</simple>
+        <log message="Inserting event row into destination db: ${body}"/>
+        <setBody>
+          <simple>
+            INSERT INTO EVENTS (ID, NAME, STARTTIME, ENDTIME, DESCRIPTION) 
+              VALUES ( ${body[ID]}, '${body[NAME]}', ${body[STARTTIME]}, ${body[ENDTIME]}, '${body[DESCRIPTION]}' )
+          </simple>
+        </setBody>
+        <to uri="jdbc:dataDestination"/>
       </split>
     </route>
   </camelContext>
