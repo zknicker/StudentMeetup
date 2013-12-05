@@ -20,7 +20,28 @@ You can open a port using:
 ```
 sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 ```
-### Part 5 DB Table Setup
+### Email Notifier DB Table Setup
 ```
 CREATE TABLE DOGS ( ID BIGINT(19), NAME VARCHAR(255), STARTTIME BIGINT(19), ENDTIME BIGINT(19), DESCRIPTION VARCHAR(255) );
 ```
+
+### Running Services on server14.ies.cse.ohio-state.edu
+First start H2 (web console requires port 8082):
+```
+sudo java -jar /opt/h2/bin/h2-1.3.173.jar -tcpAllowOthers -webAllowOthers
+```
+
+Second, start JBOSS (HTTP requires port 8080):
+```
+sudo sh /opt/jboss/bin/standalone.sh
+```
+
+Third, start ServiceMix:
+```
+sudo sh /opt/servicemix/bin/servicemix.sh
+```
+
+Access the H2 web console at: http://server14.ies.cse.ohio-state.edu:8082
+Access the ServiceMix web console at: http://server14.ies.cse.ohio-state.edu:8085/system/console/bundles
+Login to the ServiceMix web console using (username) smx, (password) smx.
+Access the web application at: http://server14.ies.cse.ohio-state.edu:8080/MeetupUI/faces/calendar.xhtml
