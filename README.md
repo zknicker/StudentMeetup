@@ -38,7 +38,7 @@ sudo sh /opt/jboss/bin/standalone.sh
 
 Third, start ServiceMix (web console configured to require port 8085):
 ```
-sudo sh /opt/servicemix/bin/servicemix.sh
+sudo sh /opt/servicemix/bin/servicemix
 ```
 
 Access the H2 web console at: http://server14.ies.cse.ohio-state.edu:8082
